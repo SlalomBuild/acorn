@@ -5,12 +5,12 @@ import { NgModule } from '@angular/core';
 
 import * as components from './';
 
-export const COMPONENTS = [
+export const componentsArray = [
 ];
 
 const addComponents = c => {
   const componentNames = Object.keys(c);
-  componentNames.forEach(n => COMPONENTS.push(c[n]));
+  componentNames.forEach(n => componentsArray.push(c[n]));
 };
 
 addComponents(components);
@@ -27,8 +27,8 @@ addComponents(components);
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [ COMPONENTS ],
-  exports: [ COMPONENTS ],
+  declarations: [ componentsArray ],
+  exports: [ componentsArray ],
   entryComponents: [
   ]
 })
