@@ -6,11 +6,11 @@ import * as fromReducers from 'app/reducers/store';
 import { SampleActions } from 'app/actions';
 
 @Component({
-  selector: 'sample-component',
-  templateUrl: './sample-component.component.html',
-  styleUrls: ['./sample-component.component.scss']
+  selector: 'sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.scss']
 })
-export class SampleComponentComponent implements OnInit {
+export class SampleComponent implements OnInit {
   public sampleCollectionSubscription: Subscription = null;
   public sampleCollection: any = null;
   public currentPageStart: number = null;

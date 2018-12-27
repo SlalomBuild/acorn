@@ -9,7 +9,7 @@ import { SampleService } from 'app/services';
 import * as fromReducers from 'app/reducers/store';
 
 @Injectable()
-export class ApplicationEffects {
+export class SampleEffects {
   constructor(
     private actions$: Actions,
     private sampleService: SampleService,
@@ -30,8 +30,7 @@ export class ApplicationEffects {
           return new SampleActions.SetSampleCollection(res);
         })
         .catch(() => {
-          // TODO: error handling
-          return Observable.of(/* new Action() */);
+          return Observable.of(new SampleActions.SetSampleCollection(null));
         })
     })
   );
