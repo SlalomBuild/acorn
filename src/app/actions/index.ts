@@ -1,1 +1,5 @@
-export * from './sample-actions';
+import * as SampleActions from './sample-actions';
+
+export {
+  SampleActions
+};

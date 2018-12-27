@@ -8,10 +8,10 @@ export const initialState: State = {
   sampleCollection: null,
 };
 
-export function reducer(state = initialState, action: ApplicationActions.Actions): State {
+export function reducer(state = initialState, action: SampleActions.Actions): State {
   switch (action.type) {
-    case ApplicationActions.actionTypes.SET_SAMPLE_DATA: {
-      const act = action as ApplicationActions.SetSampleCollection;
+    case SampleActions.actionTypes.SET_SAMPLE_DATA: {
+      const act = action as SampleActions.SetSampleCollection;
       return Object.assign({}, state, { sampleCollection: act.payload });
     }
     default: {

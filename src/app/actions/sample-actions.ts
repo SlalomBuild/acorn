@@ -1,11 +1,8 @@
 import { Action } from '@ngrx/store';
 
-import { type } from '../util';
-import { Assignee, Branch, Competitor, CostTypeCode, PostalCode, StateProvince, CommunicationAction, CommunicationResultCode, DeleteReason, CustomerType, ItemClass, LineType } from 'generated/models';
-
 export const actionTypes = {
-  REQUEST_SAMPLE_DATA: type('[Sample] Request sample data'),
-  SET_SAMPLE_DATA:     type('[Sample] Set sample data'),
+  REQUEST_SAMPLE_DATA: '[Sample] Request sample data',
+  SET_SAMPLE_DATA:     '[Sample] Set sample data',
 };
 
 /**

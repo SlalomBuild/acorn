@@ -1,15 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+
+/**
+ * storeFreeze prevents state from being mutated. When mutation occurs, an
+ * exception will be thrown. This is useful during development mode to
+ * ensure that none of the reducers accidentally mutates the state.
+ */
+import { storeFreeze } from 'ngrx-store-freeze';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Components Module
-import { ComponentsModule } from './components/components.module';
+import { ComponentsModule } from 'app/components/components.module';
 
-import * as effects from './effects';
-import * as resolvers from './resolvers';
-import * as services from './services';
+import { reducers } from 'app/reducers/store';
+import * as effects from 'app/effects';
+import * as services from 'app/services';
 
 const effectsArray = [];
 const servicesArray = [];
@@ -25,21 +36,22 @@ const addConstruct = (construct, array, method?) => {
   });
 };
 
-addConstruct(effects, effectsArray, EffectsModule.run);
+addConstruct(effects, effectsArray, (e) => EffectsModule.forRoot([e]));
 addConstruct(services, servicesArray);
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...effectsArray
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     AppRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    StoreModule.forRoot(reducers, { metaReducers: [storeFreeze] }),
+    ...effectsArray
   ],
   providers: [
-    resolversArray,
     servicesArray
   ],
   bootstrap: [
