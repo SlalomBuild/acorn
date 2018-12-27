@@ -22,6 +22,11 @@ import { reducers } from 'app/reducers/store';
 import * as effects from 'app/effects';
 import * as services from 'app/services';
 
+
+/*
+  Rather than requiring a list of every service/effect/resolver/etc in the project to be
+  maintained here, import each directory whole and dynamically add it to our imports/providers
+*/
 const effectsArray = [];
 const servicesArray = [];
 

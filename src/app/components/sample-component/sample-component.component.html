@@ -1,6 +1,19 @@
-<p>
-  sample-component works!
-</p>
-<div>
-  {{ sampleCollection | async | json }}
-</div>
+Sample data:
+<table>
+  <thead>
+    <tr>
+      <th>index</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of sampleCollection?.collection; let i = index">
+      <td>{{ i }}</td>
+      <td>{{ row.a }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ sampleCollection?.size }}</td>
+    </tr>
+  </tfoot>

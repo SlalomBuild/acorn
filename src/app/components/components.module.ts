@@ -5,6 +5,10 @@ import { NgModule } from '@angular/core';
 
 import * as components from './';
 
+/*
+  Rather than requiring a list of every component in the project to be maintained here,
+  import the whole directory and dynamically add it to our imports/providers
+*/
 export const componentsArray = [
 ];
 
