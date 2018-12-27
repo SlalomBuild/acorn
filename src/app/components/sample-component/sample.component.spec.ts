@@ -68,4 +68,17 @@ describe('SampleComponent', () => {
     expect(component.currentPageStart).toEqual(1);
     expect(component.currentPageEnd).toEqual(2);
   });
+
+  it('onSampleUpdate should use the page boundary for currentPageEnd if it is greater than size', () => {
+    component.sampleCollection = null;
+    const newCollection = {
+      collection: [],
+      size: 200,
+      pageSize: 25,
+      page: 2
+    };
+    component.onSampleUpdate(newCollection);
+    expect(component.currentPageStart).toEqual(26);
+    expect(component.currentPageEnd).toEqual(50);
+  });
 });

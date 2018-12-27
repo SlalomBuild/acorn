@@ -32,7 +32,6 @@ Navigate to `/mocks/` directory and run `npm run start` to start a mock server o
 * Add containers
 * Add route resolve/guard samples
 * Test schematics with import/index scheme
-* Unit tests
 
 ## Further help
 

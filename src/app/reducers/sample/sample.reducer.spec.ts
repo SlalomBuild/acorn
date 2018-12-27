@@ -26,6 +26,12 @@ describe('SampleReducer', () => {
     expect(result.sampleCollection).toEqual(newCollection);
   });
 
+  it('should not update state in default case', () => {
+    const action = new SampleActions.RequestSampleData();
+    const result = SampleReducer.reducer(initialState, action);
+    expect(result).toEqual(initialState);
+  });
+
   it('getSampleCollection should return sampleCollection', () => {
     expect(SampleReducer.getSampleCollection(initialState)).toEqual(initialState.sampleCollection);
   });
