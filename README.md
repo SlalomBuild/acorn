@@ -27,12 +27,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 Navigate to `/mocks/` directory and run `npm run start` to start a mock server on `http://localhost:3002`.
 
-## TODO:
-* Add routes
-* Add containers
-* Add route resolve/guard samples
-* Test schematics with import/index scheme
-
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
