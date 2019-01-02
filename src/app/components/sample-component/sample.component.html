@@ -7,13 +7,13 @@ Sample data:
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of sampleCollection?.collection; let i = index">
+    <tr *ngFor="let row of sampleData?.collection; let i = index">
       <td>{{ i }}</td>
       <td>{{ row.a }}</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="2">Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ sampleCollection?.size }}</td>
+      <td colspan="2">Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ sampleData?.size }}</td>
     </tr>
   </tfoot>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import * as fromReducers from 'app/reducers/store';
 
 @Component({
   selector: 'app-sample-page',
@@ -6,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sample-page.container.scss']
 })
 export class SamplePageContainer implements OnInit {
+  public sampleCollection: Observable<any> = null;
 
-  constructor() { }
+  constructor(
+    public store: Store<fromReducers.State>
+  ) { }
 
   ngOnInit() {
+    this.sampleCollection = this.store.select(fromReducers.getSampleCollection);
   }
 
 }

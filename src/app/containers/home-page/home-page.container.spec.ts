@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomePageContainer } from './sample-page.container';
+import { HomePageContainer } from './home-page.container';
 
 describe('HomePageContainer', () => {
   let component: HomePageContainer;

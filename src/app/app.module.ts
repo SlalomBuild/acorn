@@ -12,7 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from 'app/routes';
 import { AppComponent } from './app.component';
 
 // Components Module

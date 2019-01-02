@@ -1,43 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { Action, Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-
-import * as fromReducers from 'app/reducers/store';
-import { SampleActions } from 'app/actions';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { get } from 'lodash';
 
 @Component({
   selector: 'sample',
   templateUrl: './sample.component.html',
   styleUrls: ['./sample.component.scss']
 })
-export class SampleComponent implements OnInit {
-  public sampleCollectionSubscription: Subscription = null;
-  public sampleCollection: any = null;
+export class SampleComponent {
+  @Input() sampleData: any;
+
   public currentPageStart: number = null;
   public currentPageEnd: number = null;
 
-  constructor(
-    public store: Store<fromReducers.State>
-  ) { }
-
-  ngOnInit(): void {
-    this.store.dispatch(new SampleActions.RequestSampleData());
-    this.sampleCollectionSubscription = this.store.select(fromReducers.getSampleCollection)
-      .subscribe(this.onSampleUpdate.bind(this));
+  ngOnChanges(changes?: SimpleChanges): void {
+    // only run update logic if the property in question has been updated
+    const sampleData = get(changes, 'sampleData.currentValue');
+    if (sampleData) {
+      this.onSampleUpdate();
+    }
   }
 
-  ngOnDestroy(): void {
-    this.sampleCollectionSubscription.unsubscribe();
-  }
-
-  onSampleUpdate(collection: any): void {
-    if (!collection) {
+  onSampleUpdate(): void {
+    if (!this.sampleData) {
       return;
     }
 
-    this.sampleCollection = collection;
-    this.currentPageStart = (collection.page - 1) * collection.pageSize + 1;
-    const pageEnd = collection.page * collection.pageSize;
-    this.currentPageEnd = pageEnd < collection.size ? pageEnd : collection.size;
+    this.currentPageStart = (this.sampleData.page - 1) * this.sampleData.pageSize + 1;
+    const pageEnd = this.sampleData.page * this.sampleData.pageSize;
+    this.currentPageEnd = pageEnd < this.sampleData.size ? pageEnd : this.sampleData.size;
   }
 }
