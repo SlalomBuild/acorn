@@ -50,7 +50,7 @@ addConstruct(containers, containersArray);
 @NgModule({
   declarations: [
     AppComponent,
-    ...containersArray
+    ...containersArray,
   ],
   imports: [
     BrowserModule,
