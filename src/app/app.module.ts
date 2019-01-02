@@ -21,6 +21,7 @@ import { ComponentsModule } from 'app/components/components.module';
 import { reducers } from 'app/reducers/store';
 import * as effects from 'app/effects';
 import * as services from 'app/services';
+import * as containers from 'app/containers';
 
 
 /*
@@ -29,6 +30,7 @@ import * as services from 'app/services';
 */
 const effectsArray = [];
 const servicesArray = [];
+const containersArray = [];
 
 const addConstruct = (construct, array, method?) => {
   const constructNames = Object.keys(construct);
@@ -43,10 +45,12 @@ const addConstruct = (construct, array, method?) => {
 
 addConstruct(effects, effectsArray, (e) => EffectsModule.forRoot([e]));
 addConstruct(services, servicesArray);
+addConstruct(containers, containersArray);
 
 @NgModule({
   declarations: [
     AppComponent,
+    ...containersArray
   ],
   imports: [
     BrowserModule,
