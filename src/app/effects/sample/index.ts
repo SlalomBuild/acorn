@@ -1,1 +1,1 @@
-export * from './sample.effect';
+export * from './sample.effects';
