@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.container.scss']
 })
 export class HomePageContainer implements OnInit {
+  title = 'boilerplate';
 
   constructor() { }
 
