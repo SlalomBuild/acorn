@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-See [angular-schematics](https://bitbucket.org/paulstahmer/angular-schematics/src/master/) for scaffolding tailored to this project structure.
+See [acorn-schematics](https://bitbucket.org/paulstahmer/acorn-schematics/src/master/) for scaffolding tailored to this project structure.
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 **Note:** Make sure all related index files are up to date.
