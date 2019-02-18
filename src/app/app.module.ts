@@ -21,8 +21,15 @@ import { ComponentsModule } from 'app/components/components.module';
 import { reducers } from 'app/reducers/store';
 import * as effects from 'app/effects';
 import * as services from 'app/services';
-import * as containers from 'app/containers';
+import {
+  HomePageContainer,
+  SamplePageContainer
+} from 'app/containers';
 
+const containersArray = [
+  HomePageContainer,
+  SamplePageContainer
+];
 
 /*
   Rather than requiring a list of every service/effect/resolver/etc in the project to be
@@ -30,7 +37,6 @@ import * as containers from 'app/containers';
 */
 const effectsArray = [];
 const servicesArray = [];
-const containersArray = [];
 
 const addConstruct = (construct, array, method?) => {
   const constructNames = Object.keys(construct);
@@ -45,7 +51,10 @@ const addConstruct = (construct, array, method?) => {
 
 addConstruct(effects, effectsArray, (e) => EffectsModule.forRoot([e]));
 addConstruct(services, servicesArray);
-addConstruct(containers, containersArray);
+
+// Todo: Figure out why dynamic imports work for effects/services, but not components
+// https://github.com/angular/angular-cli/issues/13416
+// addConstruct(containers, containersArray);
 
 @NgModule({
   declarations: [

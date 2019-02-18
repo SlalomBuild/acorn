@@ -3,21 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import * as components from './';
+import {
+  SampleComponent,
+  NavigationBarComponent
+} from 'app/components';
 
-/*
-  Rather than requiring a list of every component in the project to be maintained here,
-  import the whole directory and dynamically add it to our imports/providers
-*/
-export const componentsArray = [
+const components = [
+  SampleComponent,
+  NavigationBarComponent
 ];
 
-const addComponents = c => {
-  const componentNames = Object.keys(c);
-  componentNames.forEach(n => componentsArray.push(c[n]));
-};
-
-addComponents(components);
+// Todo: Figure out why dynamic imports work for effects/services, but not components
+// https://github.com/angular/angular-cli/issues/13416
 
 /**
  * Contains sharable components accessible to all containers in the application
@@ -31,8 +28,8 @@ addComponents(components);
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [ componentsArray ],
-  exports: [ componentsArray ],
+  declarations: [ components ],
+  exports: [ components ],
   entryComponents: [
   ]
 })
