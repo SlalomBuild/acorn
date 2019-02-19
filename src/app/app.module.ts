@@ -38,18 +38,14 @@ const containersArray = [
 const effectsArray = [];
 const servicesArray = [];
 
-const addConstruct = (construct, array, method?) => {
+const addConstruct = (construct, array) => {
   const constructNames = Object.keys(construct);
   constructNames.forEach(n => {
-    if (method) {
-      array.push(method(construct[n]));
-    } else {
-      array.push(construct[n]);
-    }
+    array.push(construct[n]);
   });
 };
 
-addConstruct(effects, effectsArray, (e) => EffectsModule.forRoot([e]));
+addConstruct(effects, effectsArray);
 addConstruct(services, servicesArray);
 
 // Todo: Figure out why dynamic imports work for effects/services, but not components
@@ -67,7 +63,7 @@ addConstruct(services, servicesArray);
     AppRoutingModule,
     ComponentsModule,
     StoreModule.forRoot(reducers, { metaReducers: [storeFreeze] }),
-    ...effectsArray
+    ...EffectsModule.forRoot(effectsArray)
   ],
   providers: [
     servicesArray
