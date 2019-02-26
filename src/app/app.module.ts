@@ -63,7 +63,7 @@ addConstruct(services, servicesArray);
     AppRoutingModule,
     ComponentsModule,
     StoreModule.forRoot(reducers, { metaReducers: [storeFreeze] }),
-    ...EffectsModule.forRoot(effectsArray)
+    EffectsModule.forRoot(effectsArray)
   ],
   providers: [
     servicesArray
