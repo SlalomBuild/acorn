@@ -4,4 +4,5 @@ const API = 'api';
 // available api resources
 export default {
   sample: `${CONTEXT}/${API}/sample-data`,
+  movies: `${CONTEXT}/${API}/movies`,
 };
