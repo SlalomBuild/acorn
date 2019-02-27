@@ -16,7 +16,7 @@ import * as fromSample from './sample';
  */
 export interface State {
   sample: fromSample.State;
-}
+};
 
 export const reducers = {
   sample: fromSample.reducer,

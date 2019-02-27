@@ -5,12 +5,12 @@ import { NgModule } from '@angular/core';
 
 import {
   SampleComponent,
-  NavigationBarComponent
+  NavigationBarComponent,
 } from 'app/components';
 
 const components = [
   SampleComponent,
-  NavigationBarComponent
+  NavigationBarComponent,
 ];
 
 // Todo: Figure out why dynamic imports work for effects/services, but not components
