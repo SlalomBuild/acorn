@@ -8,7 +8,7 @@ import { MoviesResolver } from './movies-resolver.resolver';
 const routes: Routes = [
   { path: '', component: HomePageContainer },
   {
-    path: 'sample',
+    path: 'movies',
     component: MoviesPageContainer,
     resolve: {
       data: MoviesResolver

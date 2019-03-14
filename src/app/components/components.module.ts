@@ -4,12 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import {
-  SampleComponent,
+  MoviesTableComponent,
   NavigationBarComponent,
 } from 'app/components';
 
 const components = [
-  SampleComponent,
+  MoviesTableComponent,
   NavigationBarComponent,
 ];
 

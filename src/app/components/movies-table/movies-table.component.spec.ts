@@ -22,23 +22,23 @@ describe('SampleComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('ngOnChanges should only call onSampleUpdate if sampleData was changed', () => {
-    component.onSampleUpdate = jasmine.createSpy('onSampleUpdate');
+  it('ngOnChanges should only call onMoviesUpdate if movies was changed', () => {
+    component.onMoviesUpdate = jasmine.createSpy('onMoviesUpdate');
     component.ngOnChanges();
-    expect(component.onSampleUpdate).not.toHaveBeenCalled();
+    expect(component.onMoviesUpdate).not.toHaveBeenCalled();
     component.ngOnChanges({
-      sampleData: new SimpleChange(null, {}, false)
+      movies: new SimpleChange(null, {}, false)
     });
-    expect(component.onSampleUpdate).toHaveBeenCalled();
+    expect(component.onMoviesUpdate).toHaveBeenCalled();
   });
 
-  it('onSampleUpdate should safely escape on nulls', () => {
-    component.sampleData = null;
-    component.onSampleUpdate();
-    expect(component.sampleData).toEqual(null);
+  it('onMoviesUpdate should safely escape on nulls', () => {
+    component.movies = null;
+    component.onMoviesUpdate();
+    expect(component.movies).toEqual(null);
   });
 
-  it('onSampleUpdate should update appropriate properties', () => {
+  it('onMoviesUpdate should update appropriate properties', () => {
     const newCollection = {
       collection: [
         { a: 1 },
@@ -48,22 +48,22 @@ describe('SampleComponent', () => {
       pageSize: 25,
       page: 1
     };
-    component.sampleData = newCollection;
-    component.onSampleUpdate();
-    expect(component.sampleData).toEqual(newCollection);
+    component.movies = newCollection;
+    component.onMoviesUpdate();
+    expect(component.movies).toEqual(newCollection);
     expect(component.currentPageStart).toEqual(1);
     expect(component.currentPageEnd).toEqual(2);
   });
 
-  it('onSampleUpdate should use the page boundary for currentPageEnd if it is greater than size', () => {
+  it('onMoviesUpdate should use the page boundary for currentPageEnd if it is greater than size', () => {
     const newCollection = {
       collection: [],
       size: 200,
       pageSize: 25,
       page: 2
     };
-    component.sampleData = newCollection;
-    component.onSampleUpdate();
+    component.movies = newCollection;
+    component.onMoviesUpdate();
     expect(component.currentPageStart).toEqual(26);
     expect(component.currentPageEnd).toEqual(50);
   });

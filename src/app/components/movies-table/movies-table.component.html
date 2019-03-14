@@ -1,4 +1,4 @@
-Sample data:
+<h3>Movies</h3>
 <table>
   <thead>
     <tr>
@@ -7,13 +7,14 @@ Sample data:
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of sampleData?.collection; let i = index">
-      <td>{{ i }}</td>
-      <td>{{ row.a }}</td>
+    <tr *ngFor="let row of sampleData?.collection">
+      <td>{{ row.id }}</td>
+      <td>{{ row.title }}</td>
+      <td>{{ row.description }}</td>
     </tr>
   </tbody>
   <tfoot>
-    <tr>
+    <!-- <tr>
       <td colspan="2">Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ sampleData?.size }}</td>
-    </tr>
+    </tr> -->
   </tfoot>
