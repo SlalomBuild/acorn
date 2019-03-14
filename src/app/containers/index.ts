@@ -1,2 +1,2 @@
-export * from './sample-page';
+export * from './movies-page';
 export * from './home-page';

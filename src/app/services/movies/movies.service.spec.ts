@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 
-import { HttpClient, SampleService } from 'app/services';
+import { HttpClient, MoviesService } from 'app/services';
 
-describe('Sample Service', () => {
-  let service: SampleService;
+describe('Movies Service', () => {
+  let service: MoviesService;
   let http: HttpClient;
   let json;
 
@@ -21,16 +21,16 @@ describe('Sample Service', () => {
 
     TestBed.configureTestingModule({
       providers: [
-        SampleService,
+        MoviesService,
         httpProvider
       ],
     });
 
-    service = TestBed.get(SampleService);
+    service = TestBed.get(MoviesService);
     http = TestBed.get(HttpClient);
   });
 
-  it('getSampleCollection should remap result to json', (done) => {
+  it('getMoviesCollection should remap result to json', (done) => {
     service.getSampleCollection().subscribe(() => {
       expect(json).toHaveBeenCalled();
       done();

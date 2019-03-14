@@ -1,5 +1,5 @@
-import * as SampleActions from './sample-actions';
+import * as MoviesActions from './movies-actions';
 
 export {
-  SampleActions,
+  MoviesActions,
 }

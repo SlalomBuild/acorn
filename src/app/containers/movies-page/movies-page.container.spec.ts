@@ -3,11 +3,11 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { SamplePageContainer } from './sample-page.container';
+import { MoviesPageContainer } from './sample-page.container';
 
-describe('SamplePageContainer', () => {
-  let component: SamplePageContainer;
-  let fixture: ComponentFixture<SamplePageContainer>;
+describe('MoviesPageContainer', () => {
+  let component: MoviesPageContainer;
+  let fixture: ComponentFixture<MoviesPageContainer>;
   let dispatch, select;
 
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('SamplePageContainer', () => {
       }
     };
     TestBed.configureTestingModule({
-      declarations: [ SamplePageContainer ],
+      declarations: [ MoviesPageContainer ],
       providers: [ storeProvider ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
@@ -30,7 +30,7 @@ describe('SamplePageContainer', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SamplePageContainer);
+    fixture = TestBed.createComponent(MoviesPageContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

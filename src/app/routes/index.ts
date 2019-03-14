@@ -1,2 +1,2 @@
 export * from './app-routing.module';
-export * from './sample-resolver.resolver';
+export * from './movies-resolver.resolver';

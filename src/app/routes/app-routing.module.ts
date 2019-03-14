@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomePageContainer, SamplePageContainer } from 'app/containers';
+import { HomePageContainer, MoviesPageContainer } from 'app/containers';
 
 // TODO: consider moving to sub-folder so we can do a group import as these get added
-import { SampleResolver } from './sample-resolver.resolver';
+import { MoviesResolver } from './movies-resolver.resolver';
 
 const routes: Routes = [
   { path: '', component: HomePageContainer },
   {
     path: 'sample',
-    component: SamplePageContainer,
+    component: MoviesPageContainer,
     resolve: {
-      data: SampleResolver
+      data: MoviesResolver
     }
   },
 ];

@@ -8,20 +8,20 @@ import * as fromRouter from '@ngrx/router-store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-import * as fromSample from './sample';
+import * as fromMovies from './movies';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  sample: fromSample.State;
+  movies: fromMovies.State;
 };
 
 export const reducers = {
-  sample: fromSample.reducer,
+  movies: fromMovies.reducer,
 };
 
 // Sample State and Selectors
-export const getSampleState = (state: State) => state.sample;
-export const getSampleCollection = createSelector(getSampleState, fromSample.getSampleCollection);
+export const getMoviesState = (state: State) => state.movies;
+export const getMoviesCollection = createSelector(getMoviesState, fromMovies.getMovies);

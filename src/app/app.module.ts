@@ -23,12 +23,12 @@ import * as effects from 'app/effects';
 import * as services from 'app/services';
 import {
   HomePageContainer,
-  SamplePageContainer
+  MoviesPageContainer
 } from 'app/containers';
 
 const containersArray = [
   HomePageContainer,
-  SamplePageContainer
+  MoviesPageContainer
 ];
 
 /*

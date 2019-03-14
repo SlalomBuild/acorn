@@ -5,11 +5,11 @@ import { HttpClient } from '../http-client';
 import serviceEndpoints from '../endpoints';
 
 @Injectable()
-export class SampleService {
+export class MoviesService {
   constructor(public http: HttpClient) { }
 
-  getSampleCollection(): Observable<any> {
-    return this.http.get(serviceEndpoints.sample)
+  getMoviesCollection(): Observable<any> {
+    return this.http.get(serviceEndpoints.movies)
       .map(res => res.json());
   }
 }

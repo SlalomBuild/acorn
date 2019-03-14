@@ -1,7 +1,7 @@
-const CONTEXT = 'http://localhost:3002';
+const CONTEXT = 'https://as-eastus-blackslope-dev01.azurewebsites.net';
 const API = 'api';
 
 // available api resources
 export default {
-  sample: `${CONTEXT}/${API}/sample-data`,
+  movies: `${CONTEXT}/${API}/v1/movies`,
 };

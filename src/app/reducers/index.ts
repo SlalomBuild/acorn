@@ -1,5 +1,5 @@
-import * as SampleReducer from './sample';
+import * as MoviesReducer from './movies';
 
 export {
-  SampleReducer,
+  MoviesReducer,
 };

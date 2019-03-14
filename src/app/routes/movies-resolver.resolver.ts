@@ -4,18 +4,18 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import * as fromReducers from 'app/reducers/store';
-import { SampleActions } from 'app/actions';
+import { MoviesActions } from 'app/actions';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SampleResolver implements Resolve<boolean> {
+export class MoviesResolver implements Resolve<boolean> {
   constructor(
     private store: Store<fromReducers.State>
   ) { }
 
   resolve() {
-    this.store.dispatch(new SampleActions.RequestSampleData());
+    this.store.dispatch(new MoviesActions.RequestMovies());
     return true;
   }
 }
