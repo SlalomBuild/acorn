@@ -1,3 +1,3 @@
 module.exports = {
-  sampleDataUri: '/**/sample-data',
+  moviesUri: '/**/movies',
 };
