@@ -3,7 +3,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { MoviesPageContainer } from './sample-page.container';
+import { MoviesPageContainer } from './movies-page.container';
 
 describe('MoviesPageContainer', () => {
   let component: MoviesPageContainer;

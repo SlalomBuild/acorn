@@ -25,7 +25,6 @@ export class MoviesTableComponent {
     }
   }
 
-  // TODO: implement paging
   onMoviesUpdate(): void {
     if (!this.movies) {
       return;
@@ -34,5 +33,15 @@ export class MoviesTableComponent {
     this.currentPageStart = (this.currentPage - 1) * this.pageSize + 1;
     const pageEnd = this.currentPage * this.pageSize;
     this.currentPageEnd = pageEnd < this.movies.length ? pageEnd : this.movies.length;
+
+    this.pagedMovies = this.movies.slice(this.currentPageStart - 1, this.currentPageEnd);
+  }
+
+  setPage(page: number) {
+    if (page <= 0 || page > this.movies.length / this.pageSize) {
+      return;
+    }
+    this.currentPage = page;
+    this.onMoviesUpdate();
   }
 }

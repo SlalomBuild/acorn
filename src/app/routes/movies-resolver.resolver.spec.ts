@@ -1,7 +1,7 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 
-import { MoviesResolver } from './sample-resolver.resolver';
+import { MoviesResolver } from './movies-resolver.resolver';
 import { MoviesActions } from 'app/actions';
 
 describe('MoviesResolver', () => {

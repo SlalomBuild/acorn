@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of movies">
+    <tr *ngFor="let row of pagedMovies">
       <td>{{ row.id }}</td>
       <td>{{ row.title }}</td>
       <td>{{ row.description }}</td>
@@ -16,6 +16,18 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="2">Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ sampleData?.size }}</td>
+      <td>
+        <button
+          [disabled]="currentPage <= 1"
+          (click)="setPage(currentPage - 1)"
+        ><</button>
+        <button
+          [disabled]="currentPage > movies?.length / pageSize - 1"
+          (click)="setPage(currentPage + 1)"
+        >></button>
+      </td>
+      <td colspan="2">
+        Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ movies?.length }}
+      </td>
     </tr>
   </tfoot>

@@ -31,7 +31,8 @@ describe('Movies Service', () => {
   });
 
   it('getMoviesCollection should remap result to json', (done) => {
-    service.getSampleCollection().subscribe(() => {
+    json.and.returnValue({ movies: [] });
+    service.getMoviesCollection().subscribe(() => {
       expect(json).toHaveBeenCalled();
       done();
     });

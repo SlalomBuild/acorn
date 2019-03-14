@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SimpleChange } from '@angular/core';
 
-import { SampleComponent } from './sample.component';
-import { SampleActions } from 'app/actions';
+import { MoviesTableComponent } from './movies-table.component';
+import { MoviesActions } from 'app/actions';
+import { Movie } from 'app/models';
 
-describe('SampleComponent', () => {
-  let component: SampleComponent;
-  let fixture: ComponentFixture<SampleComponent>;
+describe('MoviesTableComponent', () => {
+  let component: MoviesTableComponent;
+  let fixture: ComponentFixture<MoviesTableComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ SampleComponent ],
+      declarations: [ MoviesTableComponent ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SampleComponent);
+    fixture = TestBed.createComponent(MoviesTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -39,15 +40,7 @@ describe('SampleComponent', () => {
   });
 
   it('onMoviesUpdate should update appropriate properties', () => {
-    const newCollection = {
-      collection: [
-        { a: 1 },
-        { a: 2 }
-      ],
-      size: 2,
-      pageSize: 25,
-      page: 1
-    };
+    const newCollection = [new Movie(), new Movie()];
     component.movies = newCollection;
     component.onMoviesUpdate();
     expect(component.movies).toEqual(newCollection);
@@ -56,15 +49,51 @@ describe('SampleComponent', () => {
   });
 
   it('onMoviesUpdate should use the page boundary for currentPageEnd if it is greater than size', () => {
-    const newCollection = {
-      collection: [],
-      size: 200,
-      pageSize: 25,
-      page: 2
-    };
+    const newCollection = [];
+    for (let i = 0; i < 75; i++) {
+      newCollection.push(new Movie());
+    }
+
+    component.currentPage = 2;
     component.movies = newCollection;
     component.onMoviesUpdate();
     expect(component.currentPageStart).toEqual(26);
     expect(component.currentPageEnd).toEqual(50);
+  });
+
+  it('onMoviesUpdate should update pagedMovies', () => {
+    component.pageSize = 5;
+    component.movies = [];
+    for (let i = 0; i < 10; i++) {
+      component.movies.push(new Movie());
+    }
+    component.onMoviesUpdate();
+    expect(component.pagedMovies.length).toEqual(5);
+  });
+
+  it('setPage should do nothing if target page is out of bounds', () => {
+    component.pageSize = 5;
+    component.movies = [];
+    for (let i = 0; i < 10; i++) {
+      component.movies.push(new Movie());
+    }
+
+    component.currentPageStart = 100;
+    component.setPage(0);
+    expect(component.currentPageStart).toEqual(100);
+    component.setPage(100);
+    expect(component.currentPageStart).toEqual(100);
+  });
+
+  it('setPage should update currentPage', () => {
+    component.pageSize = 5;
+    component.movies = [];
+    for (let i = 0; i < 10; i++) {
+      component.movies.push(new Movie());
+    }
+
+    component.setPage(2);
+    expect(component.pagedMovies.length).toEqual(5);
+    expect(component.pagedMovies).toEqual(component.movies.slice(5));
   });
 });

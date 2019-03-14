@@ -42,7 +42,7 @@ describe('Movies Effects', () => {
     effects = TestBed.get(MoviesEffects);
   });
 
-  it('requestMovies should dispatch a SetMovies on success', () => {
+  it('requestMoviesCollection should dispatch a SetMovies on success', () => {
     const mockData = {
       movies: [{
         id: '1',
@@ -54,17 +54,17 @@ describe('Movies Effects', () => {
     actions = new ReplaySubject(1);
     actions.next(MoviesActions.RequestMovies);
 
-    effects.requestMovies$.subscribe(result => {
+    effects.requestMoviesCollection$.subscribe(result => {
       expect(result).toEqual(new MoviesActions.SetMovies(mockData));
     });
   });
 
-  it('requestMovies should do something on error', () => {
+  it('requestMoviesCollection should do something on error', () => {
     getMoviesCollection.and.returnValue(Observable.throw({}));
     actions = new ReplaySubject(1);
     actions.next(MoviesActions.RequestMovies);
 
-    effects.requestMovies$.subscribe(result => {
+    effects.requestMoviesCollection$.subscribe(result => {
       expect(result).toEqual(new MoviesActions.SetMovies(null));
     });
   });

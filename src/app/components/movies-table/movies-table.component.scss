@@ -5,3 +5,10 @@ thead tr, tr:nth-child(even) {
 tbody td {
   text-align: right;
 }
+
+button {
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
