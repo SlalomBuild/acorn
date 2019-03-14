@@ -2,19 +2,20 @@
 <table>
   <thead>
     <tr>
-      <th>index</th>
-      <th>a</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of sampleData?.collection">
+    <tr *ngFor="let row of movies">
       <td>{{ row.id }}</td>
       <td>{{ row.title }}</td>
       <td>{{ row.description }}</td>
     </tr>
   </tbody>
   <tfoot>
-    <!-- <tr>
+    <tr>
       <td colspan="2">Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ sampleData?.size }}</td>
-    </tr> -->
+    </tr>
   </tfoot>

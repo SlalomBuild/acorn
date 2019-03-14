@@ -21,4 +21,4 @@ export function reducer(state = initialState, action: MoviesActions.Actions): St
   }
 }
 
-export const getMovies = (state: State): any => { return state.movies; };
+export const getMoviesCollection = (state: State): any => { return state.movies; };

@@ -11,8 +11,11 @@ import { Movie } from 'app/models';
 export class MoviesTableComponent {
   @Input() movies: Movie[];
 
+  public currentPage = 1;
+  public pageSize = 25;
   public currentPageStart: number = null;
   public currentPageEnd: number = null;
+  public pagedMovies: Movie[];
 
   ngOnChanges(changes?: SimpleChanges): void {
     // only run update logic if the property in question has been updated
@@ -28,8 +31,8 @@ export class MoviesTableComponent {
       return;
     }
 
-    // this.currentPageStart = (this.movies.page - 1) * this.movies.pageSize + 1;
-    // const pageEnd = this.movies.page * this.movies.pageSize;
-    // this.currentPageEnd = pageEnd < this.movies.size ? pageEnd : this.movies.size;
+    this.currentPageStart = (this.currentPage - 1) * this.pageSize + 1;
+    const pageEnd = this.currentPage * this.pageSize;
+    this.currentPageEnd = pageEnd < this.movies.length ? pageEnd : this.movies.length;
   }
 }

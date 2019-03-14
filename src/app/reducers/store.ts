@@ -24,4 +24,4 @@ export const reducers = {
 
 // Sample State and Selectors
 export const getMoviesState = (state: State) => state.movies;
-export const getMoviesCollection = createSelector(getMoviesState, fromMovies.getMovies);
+export const getMoviesCollection = createSelector(getMoviesState, fromMovies.getMoviesCollection);
