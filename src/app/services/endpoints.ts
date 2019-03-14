@@ -1,5 +1,5 @@
-// const CONTEXT = 'https://as-eastus-blackslope-dev01.azurewebsites.net';
-const CONTEXT = 'http://localhost:3002';
+const CONTEXT = 'https://as-eastus-blackslope-dev01.azurewebsites.net';
+// const CONTEXT = 'http://localhost:3002';
 const API = 'api';
 
 // available api resources

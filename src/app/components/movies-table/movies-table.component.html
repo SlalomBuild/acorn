@@ -16,17 +16,15 @@
   </tbody>
   <tfoot>
     <tr>
-      <td>
+      <td colspan="3">
         <button
-          [disabled]="currentPage <= 1"
-          (click)="setPage(currentPage - 1)"
+        [disabled]="currentPage <= 1"
+        (click)="setPage(currentPage - 1)"
         ><</button>
         <button
-          [disabled]="currentPage > movies?.length / pageSize - 1"
-          (click)="setPage(currentPage + 1)"
+        [disabled]="currentPage > movies?.length / pageSize - 1"
+        (click)="setPage(currentPage + 1)"
         >></button>
-      </td>
-      <td colspan="2">
         Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ movies?.length }}
       </td>
     </tr>

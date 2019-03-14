@@ -11,6 +11,6 @@ export class MoviesService {
 
   getMoviesCollection(): Observable<any> {
     return this.http.get(serviceEndpoints.movies)
-      .map(res => res.json().movies.map((m) => new Movie(m)));
+      .map(res => res.json().data.movies.map((m) => new Movie(m)));
   }
 }

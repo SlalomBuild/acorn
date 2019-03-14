@@ -57,12 +57,12 @@ export class HttpClient {
       requestOptions.headers = new Headers();
     }
 
-    this.setAuthTokenHeader(requestOptions.headers);
+    // this.setAuthTokenHeader(requestOptions.headers);
 
     return this.http.request(new Request(requestOptions))
       .map(res => {
         // Do anything necessary for logging the response
-        return res;
+        return res && res;
       })
       .catch(err => {
         // Do anything necessary for logging the error
