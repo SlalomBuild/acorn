@@ -11,7 +11,7 @@ import { Movie } from 'app/models';
   styleUrls: ['./movies-page.container.scss']
 })
 export class MoviesPageContainer implements OnInit {
-  public moviesCollection: Observable<Movie> = null;
+  public moviesCollection: Observable<Movie[]> = null;
 
   constructor(
     public store: Store<fromReducers.State>

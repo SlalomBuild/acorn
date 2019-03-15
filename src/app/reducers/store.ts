@@ -22,6 +22,7 @@ export const reducers = {
   movies: fromMovies.reducer,
 };
 
-// Sample State and Selectors
+// Movie State and Selectors
 export const getMoviesState = (state: State) => state.movies;
 export const getMoviesCollection = createSelector(getMoviesState, fromMovies.getMoviesCollection);
+export const getMovie = createSelector(getMoviesState, fromMovies.getMovie);

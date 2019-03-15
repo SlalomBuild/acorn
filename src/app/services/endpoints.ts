@@ -4,5 +4,6 @@ const API = 'api';
 
 // available api resources
 export default {
-  movies: `${CONTEXT}/${API}/v1/movies`,
+  movies: () => `${CONTEXT}/${API}/v1/movies`,
+  movie: (id) => `${CONTEXT}/${API}/v1/movies/${id}`,
 };
