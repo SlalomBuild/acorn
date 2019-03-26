@@ -6,11 +6,13 @@ import { NgModule } from '@angular/core';
 import {
   MoviesTableComponent,
   NavigationBarComponent,
+  MovieBuilderComponent,
 } from 'app/components';
 
 const components = [
   MoviesTableComponent,
   NavigationBarComponent,
+  MovieBuilderComponent,
 ];
 
 /**
@@ -25,7 +27,7 @@ const components = [
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [ components ],
+  declarations: [ components, MovieBuilderComponent ],
   exports: [ components ],
   entryComponents: [
   ]

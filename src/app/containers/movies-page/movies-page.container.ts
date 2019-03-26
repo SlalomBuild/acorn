@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import * as fromReducers from 'app/reducers/store';
+import { MoviesActions } from 'app/actions';
 import { Movie } from 'app/models';
 
 @Component({
@@ -19,6 +20,10 @@ export class MoviesPageContainer implements OnInit {
 
   ngOnInit() {
     this.moviesCollection = this.store.select(fromReducers.getMoviesCollection);
+  }
+
+  onSubmitMovie(movie) {
+    this.store.dispatch(new MoviesActions.CreateMovie(movie));
   }
 
 }
