@@ -62,7 +62,7 @@ export class HttpClient {
     return this.http.request(new Request(requestOptions))
       .map(res => {
         // Do anything necessary for logging the response
-        return res && res;
+        return res;
       })
       .catch(err => {
         // Do anything necessary for logging the error

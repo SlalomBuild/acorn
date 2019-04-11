@@ -22,6 +22,7 @@ describe('Movies Effects', () => {
     createMovie = jasmine.createSpy('createMovie');
     updateMovie = jasmine.createSpy('updateMovie');
     deleteMovie = jasmine.createSpy('deleteMovie');
+
     dispatch = jasmine.createSpy('dispatch');
 
     const serviceProvider = {

@@ -21,6 +21,7 @@ import { ComponentsModule } from 'app/components/components.module';
 import { reducers } from 'app/reducers/store';
 import * as effects from 'app/effects';
 import * as services from 'app/services';
+
 import {
   HomePageContainer,
   MoviesPageContainer

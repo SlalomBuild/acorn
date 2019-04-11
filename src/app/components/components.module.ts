@@ -27,7 +27,7 @@ const components = [
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [ components, MovieBuilderComponent ],
+  declarations: [ components ],
   exports: [ components ],
   entryComponents: [
   ]

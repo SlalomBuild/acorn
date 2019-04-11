@@ -22,7 +22,7 @@ export class MoviesPageContainer implements OnInit {
     this.moviesCollection = this.store.select(fromReducers.getMoviesCollection);
   }
 
-  onSubmitMovie(movie) {
+  onSubmitMovie(movie: Movie) {
     this.store.dispatch(new MoviesActions.CreateMovie(movie));
   }
 

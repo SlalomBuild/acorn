@@ -6,4 +6,5 @@ const API = 'api';
 export default {
   movies: () => `${CONTEXT}/${API}/v1/movies`,
   movie: (id) => `${CONTEXT}/${API}/v1/movies/${id}`,
+  ratings: () => `${CONTEXT}/${API}/v1/movies/movieIdHere/rating`,
 };
