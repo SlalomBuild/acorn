@@ -6,11 +6,13 @@ import { NgModule } from '@angular/core';
 import {
   MoviesTableComponent,
   NavigationBarComponent,
+  TestComponent,
 } from 'app/components';
 
 const components = [
   MoviesTableComponent,
   NavigationBarComponent,
+  TestComponent,
 ];
 
 /**
