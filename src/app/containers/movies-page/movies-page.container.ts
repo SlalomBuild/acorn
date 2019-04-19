@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import * as fromReducers from 'app/reducers/store';
-import { MoviesActions } from 'app/actions';
+import { ApplicationActions, MoviesActions } from 'app/actions';
 import { Movie } from 'app/models';
 
 @Component({
@@ -24,6 +24,11 @@ export class MoviesPageContainer implements OnInit {
 
   onSubmitMovie(movie: Movie) {
     this.store.dispatch(new MoviesActions.CreateMovie(movie));
+  }
+
+  onUpdateMovie(id: string) {
+    this.store.dispatch(new MoviesActions.RequestMovie(id));
+    this.store.dispatch(new ApplicationActions.OpenModal('movie'));
   }
 
   onDeleteMovie(id: string) {

@@ -8,6 +8,7 @@ import * as fromRouter from '@ngrx/router-store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
+import * as fromApplication from './application';
 import * as fromMovies from './movies';
 
 /**
@@ -15,11 +16,22 @@ import * as fromMovies from './movies';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
+  application: fromApplication.State;
   movies: fromMovies.State;
 };
 
 export const reducers = {
+  application: fromApplication.reducer,
   movies: fromMovies.reducer,
+};
+
+// Application State and Selectors
+export const getApplicationState = (state: State) => state.application;
+export const getModal = (modal: string) => {
+  return createSelector(
+    getApplicationState,
+    (state): boolean => fromApplication.getModal(state, modal)
+  );
 };
 
 // Movie State and Selectors

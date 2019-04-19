@@ -1,0 +1,10 @@
+<div class="modal" [ngClass]="{ 'open': isOpen }">
+  <i
+    class="fal fa-times"
+    (click)="closeAllModals()"
+  ></i>
+  <h1>{{ headerText }}</h1>
+  <div class="modal-content-wrapper">
+    <ng-content *ngIf="!isLoading"></ng-content>
+  </div>
+</div>

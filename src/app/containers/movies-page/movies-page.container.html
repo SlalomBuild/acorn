@@ -1,5 +1,6 @@
 <movies-table
   [movies]="moviesCollection | async"
+  (updateMovie)="onUpdateMovie($event)"
   (deleteMovie)="onDeleteMovie($event)"
 ></movies-table>
 <movie-builder

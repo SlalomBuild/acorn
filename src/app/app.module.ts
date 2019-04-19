@@ -24,12 +24,14 @@ import * as services from 'app/services';
 
 import {
   HomePageContainer,
-  MoviesPageContainer
+  MoviesPageContainer,
+  ModalContainer,
 } from 'app/containers';
 
 const containersArray = [
   HomePageContainer,
-  MoviesPageContainer
+  MoviesPageContainer,
+  ModalContainer,
 ];
 
 /*

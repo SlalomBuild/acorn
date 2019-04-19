@@ -11,7 +11,9 @@
   <tbody>
     <tr *ngFor="let row of pagedMovies; let i = index;">
       <td>{{ row.id }}</td>
-      <td [style.width]="'175px'">{{ row.title }}</td>
+      <td [style.width]="'175px'">
+        <a (click)="updateMovie.emit(row.id)">{{ row.title }}</a>
+      </td>
       <td>{{ row.description }}</td>
       <td><i class="fa fas fa-trash" (click)="deleteRow(i)"></i></td>
     </tr>

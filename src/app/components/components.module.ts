@@ -7,12 +7,16 @@ import {
   MoviesTableComponent,
   NavigationBarComponent,
   MovieBuilderComponent,
+  ModalComponent,
+  MovieModalComponent,
 } from 'app/components';
 
 const components = [
   MoviesTableComponent,
   NavigationBarComponent,
   MovieBuilderComponent,
+  ModalComponent,
+  MovieModalComponent,
 ];
 
 /**

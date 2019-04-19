@@ -3,7 +3,7 @@ h1 {
 }
 
 tr:nth-child(even) {
-  background-color: #eee;
+  background-color: rgba(teal, .08);
 }
 
 thead tr {
@@ -36,5 +36,10 @@ i {
   &:active {
     transform: scale(.9);
   }
+}
 
+a {
+  color: teal;
+  text-decoration: none;
+  cursor: pointer;
 }

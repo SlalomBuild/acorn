@@ -10,6 +10,7 @@ import { Movie } from 'app/models';
 })
 export class MoviesTableComponent {
   @Input() movies: Movie[];
+  @Output() updateMovie = new EventEmitter<string>();
   @Output() deleteMovie = new EventEmitter<string>();
 
   public currentPage = 1;
