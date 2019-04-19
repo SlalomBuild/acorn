@@ -26,7 +26,7 @@ export class MoviesPageContainer implements OnInit {
     this.store.dispatch(new MoviesActions.CreateMovie(movie));
   }
 
-  onDeleteMovie(id: number) {
+  onDeleteMovie(id: string) {
     this.store.dispatch(new MoviesActions.DeleteMovie(id));
   }
 }

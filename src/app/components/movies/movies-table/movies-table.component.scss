@@ -1,9 +1,23 @@
-thead tr, tr:nth-child(even) {
-  background-color: lightgray;
+h1 {
+  margin-top: 1.5em;
 }
 
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+thead tr {
+  background-color: teal;
+  color: white;
+}
+
+thead th {
+  text-align: left;
+  padding: 6px 8px;
+}
 tbody td {
-  text-align: right;
+  text-align: left;
+  padding: 8px;
 }
 
 button {
