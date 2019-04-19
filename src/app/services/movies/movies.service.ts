@@ -20,12 +20,12 @@ export class MoviesService {
   }
 
   updateMovie(movie: Movie): Observable<Movie> {
-    return this.http.put(serviceEndpoints.movie(movie.id), movie)
+    return this.http.put(serviceEndpoints.movie(movie.id), {movie})
       .map(res => new Movie(res.json().data.movie));
   }
 
   createMovie(movie: Movie): Observable<Movie> {
-    return this.http.post(serviceEndpoints.movies(), movie)
+    return this.http.post(serviceEndpoints.movies(), {movie})
       .map(res => new Movie(res.json().data.movie));
   }
 

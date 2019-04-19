@@ -2,5 +2,6 @@
   [movies]="moviesCollection | async">
 </movies-table>
 <movie-builder
-  (onSubmit)="onSubmitMovie($event)"
+  [movies]="moviesCollection | async"
+  (submitMovie)="onSubmitMovie($event)"
 ></movie-builder>

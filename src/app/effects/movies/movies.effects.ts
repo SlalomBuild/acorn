@@ -1,7 +1,7 @@
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 import { MoviesActions } from 'app/actions';
@@ -31,7 +31,7 @@ export class MoviesEffects {
           return new MoviesActions.SetMovies(res);
         })
         .catch(() => {
-          return Observable.of(new MoviesActions.SetMovies(null));
+          return of(new MoviesActions.SetMovies(null));
         })
     })
   );
@@ -50,7 +50,7 @@ export class MoviesEffects {
           return new MoviesActions.SetMovie(res);
         })
         .catch(() => {
-          return Observable.of(new MoviesActions.SetMovie(null));
+          return of(new MoviesActions.SetMovie(null));
         })
     })
   );
@@ -68,9 +68,9 @@ export class MoviesEffects {
         .map(() => {
           return new MoviesActions.RequestMovies();
         })
-        // .catch(() => {
-        //   return Observable.of(new MoviesActions.SetMovies(null));
-        // })
+        .catch(() => {
+          return of(new MoviesActions.SetMovies(null));
+        })
     })
   );
 
@@ -87,9 +87,9 @@ export class MoviesEffects {
         .map(() => {
           return new MoviesActions.RequestMovies();
         })
-        // .catch(() => {
-        //   return Observable.of(new MoviesActions.SetMovies(null));
-        // })
+        .catch(() => {
+          return of(new MoviesActions.SetMovies(null));
+        })
     })
   );
 
@@ -106,9 +106,9 @@ export class MoviesEffects {
         .map(() => {
           return new MoviesActions.RequestMovies();
         })
-        // .catch(() => {
-        //   return Observable.of(new MoviesActions.SetMovies(null));
-        // })
+        .catch(() => {
+          return of(new MoviesActions.SetMovies(null));
+        })
     })
   );
 }

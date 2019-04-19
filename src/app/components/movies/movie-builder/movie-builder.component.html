@@ -1,3 +1,8 @@
-<div class="movie-builder">
-  MovieBuilder
-</div>
+<form class="movie-builder" [formGroup]="movieForm" (keypress.enter)="submit()">
+  <input #title type="text" formControlName="title"/>
+  <input type="text" formControlName="description"/>
+  <button
+    [disabled]="!movieForm.valid"
+    (click)="submit()"
+  >Submit</button>
+</form>

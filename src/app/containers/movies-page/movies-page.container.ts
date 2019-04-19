@@ -25,5 +25,4 @@ export class MoviesPageContainer implements OnInit {
   onSubmitMovie(movie: Movie) {
     this.store.dispatch(new MoviesActions.CreateMovie(movie));
   }
-
 }
