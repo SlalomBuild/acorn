@@ -5,13 +5,15 @@
       <th>Id</th>
       <th>Title</th>
       <th>Description</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of pagedMovies">
+    <tr *ngFor="let row of pagedMovies; let i = index;">
       <td>{{ row.id }}</td>
       <td>{{ row.title }}</td>
       <td>{{ row.description }}</td>
+      <td><i class="fa fas fa-trash" (click)="deleteRow(i)"></i></td>
     </tr>
   </tbody>
   <tfoot>

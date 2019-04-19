@@ -7,8 +7,20 @@ tbody td {
 }
 
 button {
-
   &:disabled {
     pointer-events: none;
   }
+}
+
+i {
+  color: #666;
+  cursor: pointer;
+  transition: color .5s ease, transform .5s ease;
+  &:hover {
+    color: #444;
+  }
+  &:active {
+    transform: scale(.9);
+  }
+
 }
