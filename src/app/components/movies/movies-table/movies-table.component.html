@@ -15,7 +15,7 @@
         <a (click)="updateMovie.emit(row.id)">{{ row.title }}</a>
       </td>
       <td>{{ row.description }}</td>
-      <td><i class="fa fas fa-trash" (click)="deleteRow(i)"></i></td>
+      <td><i class="fa fas fa-trash" (click)="deleteRow(row?.id)"></i></td>
     </tr>
   </tbody>
   <tfoot>

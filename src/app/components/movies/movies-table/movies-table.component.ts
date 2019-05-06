@@ -47,7 +47,7 @@ export class MoviesTableComponent {
     this.onMoviesUpdate();
   }
 
-  deleteRow(i: number) {
-    this.deleteMovie.emit(this.movies[i].id);
+  deleteRow(id: string) {
+    this.deleteMovie.emit(id);
   }
 }
