@@ -11,7 +11,7 @@
     <movie-modal
       *ngIf="isMovieOpen | async"
       [movie]="movie | async"
-      (onUpdate)="updateMovie()"
+      (onUpdate)="updateMovie($event)"
     ></movie-modal>
   </div>
 </div>
