@@ -1,0 +1,19 @@
+<modal
+  class="movie-modal"
+  headerText="Update Movie"
+>
+  <form class="movie-builder" [formGroup]="movieForm" (keypress.enter)="submit()">
+    <div class="field">
+      <label for="title">Title</label>
+      <input #title name="title" type="text" formControlName="title"/>
+    </div>
+    <div class="field">
+      <label for="description">Description</label>
+      <input name="description" type="text" formControlName="description"/>
+    </div>
+    <button
+      [disabled]="!movieForm.valid"
+      (click)="updateMovie()"
+    >Submit</button>
+  </form>
+</modal>

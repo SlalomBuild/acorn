@@ -57,7 +57,7 @@ export class HttpClient {
       requestOptions.headers = new Headers();
     }
 
-    this.setAuthTokenHeader(requestOptions.headers);
+    // this.setAuthTokenHeader(requestOptions.headers);
 
     return this.http.request(new Request(requestOptions))
       .map(res => {

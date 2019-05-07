@@ -1,0 +1,15 @@
+<h3>Add a movie</h3>
+<form class="movie-builder" [formGroup]="movieForm" (keypress.enter)="submit()">
+  <div class="field">
+    <label for="title">Title</label>
+    <input #title name="title" type="text" formControlName="title"/>
+  </div>
+  <div class="field">
+    <label for="description">Description</label>
+    <input name="description" type="text" formControlName="description"/>
+  </div>
+  <button
+    [disabled]="!movieForm.valid"
+    (click)="submit()"
+  >Submit</button>
+</form>

@@ -1,0 +1,52 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .overlay {
+    z-index: 99; // todo: take these into global vars?
+    background-color: black;
+    opacity: .5;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overscroll-behavior: contain;
+    overflow-y: auto;
+  }
+
+  .alignment-helper {
+    width: 1px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+
+    // whatever modal is active will need positioning updates
+    + * {
+      vertical-align: middle;
+      width: 100%;
+      display: inline-block;
+      width: 500px;
+      margin: 0 calc(50vw - 259px);
+      pointer-events: all;
+    }
+  }
+
+  .modal-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  /deep/ modal {
+    display: inline-block;
+    width: 100%;
+  }
+}

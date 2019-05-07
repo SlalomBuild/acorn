@@ -1,0 +1,17 @@
+<div
+  *ngIf="isMovieOpen | async"
+  class="modal-container"
+>
+  <div
+    class="overlay"
+    (click)="closeAllModals()"
+  ></div>
+  <div class="modal-wrapper">
+    <div class="alignment-helper"></div>
+    <movie-modal
+      *ngIf="isMovieOpen | async"
+      [movie]="movie | async"
+      (onUpdate)="updateMovie($event)"
+    ></movie-modal>
+  </div>
+</div>
