@@ -2,7 +2,7 @@
   class="movie-modal"
   headerText="Update Movie"
 >
-  <form class="movie-builder" [formGroup]="movieForm" (keypress.enter)="submit()">
+  <form class="movie-builder" [formGroup]="movieForm" (keypress.enter)="updateMovie()">
     <div class="field">
       <label for="title">Title</label>
       <input #title name="title" type="text" formControlName="title"/>
