@@ -19,6 +19,18 @@ const components = [
   MovieModalComponent,
 ];
 
+import {
+  HomePageContainer,
+  MoviesPageContainer,
+  ModalContainer,
+} from 'app/containers';
+
+const containers = [
+  HomePageContainer,
+  MoviesPageContainer,
+  ModalContainer,
+];
+
 /**
  * Contains sharable components accessible to all containers in the application
  * @export
@@ -31,8 +43,8 @@ const components = [
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [ components ],
-  exports: [ components ],
+  declarations: [ components, containers ],
+  exports: [ components, containers ],
   entryComponents: [
   ]
 })
