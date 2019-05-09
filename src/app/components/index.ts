@@ -1,3 +1,3 @@
-export * from './movies-table';
+export * from './modals';
+export * from './movies';
 export * from './navigation-bar';
-export * from './test';

@@ -53,7 +53,7 @@ describe('HttpClient Service Methods', () => {
       });
 
       reqOptions.headers = new Headers();
-      reqOptions.headers.set('Authorization', bearerTestTokenVal);
+      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
       expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
     });
   });
@@ -67,7 +67,7 @@ describe('HttpClient Service Methods', () => {
       });
 
       reqOptions.headers = new Headers();
-      reqOptions.headers.set('Authorization', bearerTestTokenVal);
+      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
       expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
     });
   });
@@ -81,7 +81,7 @@ describe('HttpClient Service Methods', () => {
       });
 
       reqOptions.headers = new Headers();
-      reqOptions.headers.set('Authorization', bearerTestTokenVal);
+      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
       expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
     });
   });
@@ -95,7 +95,7 @@ describe('HttpClient Service Methods', () => {
       });
 
       reqOptions.headers = new Headers();
-      reqOptions.headers.set('Authorization', bearerTestTokenVal);
+      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
       expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
     });
   });
@@ -109,7 +109,7 @@ describe('HttpClient Service Methods', () => {
       });
 
       reqOptions.headers = new Headers();
-      reqOptions.headers.set('Authorization', bearerTestTokenVal);
+      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
       expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
     });
   });
@@ -123,7 +123,7 @@ describe('HttpClient Service Methods', () => {
       });
 
       reqOptions.headers = new Headers();
-      reqOptions.headers.set('Authorization', bearerTestTokenVal);
+      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
       expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
     });
   });

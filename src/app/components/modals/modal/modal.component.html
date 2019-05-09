@@ -1,0 +1,10 @@
+<div class="modal">
+  <i
+    class="fa fa-times"
+    (click)="closeAllModals()"
+  ></i>
+  <h1>{{ headerText }}</h1>
+  <div class="modal-content-wrapper">
+    <ng-content></ng-content>
+  </div>
+</div>

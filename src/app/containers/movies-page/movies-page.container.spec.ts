@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { MoviesPageContainer } from './movies-page.container';
+import { MoviesActions } from 'app/actions';
+import { Movie } from 'app/models';
 
 describe('MoviesPageContainer', () => {
   let component: MoviesPageContainer;
@@ -37,5 +39,11 @@ describe('MoviesPageContainer', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('onSubmitMovie should submit movie as the payload of a CreateMovie action', () => {
+    const movie = new Movie({id: 5});
+    component.onSubmitMovie(movie);
+    expect(dispatch).toHaveBeenCalledWith(new MoviesActions.CreateMovie(movie));
   });
 });

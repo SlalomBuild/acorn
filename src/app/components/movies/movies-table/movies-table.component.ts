@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { get } from 'lodash';
 
 import { Movie } from 'app/models';
@@ -10,6 +10,8 @@ import { Movie } from 'app/models';
 })
 export class MoviesTableComponent {
   @Input() movies: Movie[];
+  @Output() updateMovie = new EventEmitter<string>();
+  @Output() deleteMovie = new EventEmitter<string>();
 
   public currentPage = 1;
   public pageSize = 25;
@@ -43,5 +45,9 @@ export class MoviesTableComponent {
     }
     this.currentPage = page;
     this.onMoviesUpdate();
+  }
+
+  deleteRow(id: string) {
+    this.deleteMovie.emit(id);
   }
 }

@@ -3,10 +3,12 @@ import { Movie } from 'app/models';
 
 export interface State {
   movies: Movie[];
+  movie: Movie;
 }
 
 export const initialState: State = {
   movies: null,
+  movie: null,
 };
 
 export function reducer(state = initialState, action: MoviesActions.Actions): State {
@@ -15,10 +17,15 @@ export function reducer(state = initialState, action: MoviesActions.Actions): St
       const act = action as MoviesActions.SetMovies;
       return Object.assign({}, state, { movies: act.payload });
     }
+    case MoviesActions.actionTypes.SET_MOVIE: {
+      const act = action as MoviesActions.SetMovie;
+      return Object.assign({}, state, { movie: act.payload });
+    }
     default: {
       return state;
     }
   }
 }
 
-export const getMoviesCollection = (state: State): any => { return state.movies; };
+export const getMoviesCollection = (state: State): Movie[] => { return state.movies; };
+export const getMovie = (state: State): Movie => { return state.movie; };

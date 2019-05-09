@@ -6,13 +6,29 @@ import { NgModule } from '@angular/core';
 import {
   MoviesTableComponent,
   NavigationBarComponent,
-  TestComponent,
+  MovieBuilderComponent,
+  ModalComponent,
+  MovieModalComponent,
 } from 'app/components';
 
 const components = [
   MoviesTableComponent,
   NavigationBarComponent,
-  TestComponent,
+  MovieBuilderComponent,
+  ModalComponent,
+  MovieModalComponent,
+];
+
+import {
+  HomePageContainer,
+  MoviesPageContainer,
+  ModalContainer,
+} from 'app/containers';
+
+const containers = [
+  HomePageContainer,
+  MoviesPageContainer,
+  ModalContainer,
 ];
 
 /**
@@ -27,8 +43,8 @@ const components = [
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [ components ],
-  exports: [ components ],
+  declarations: [ components, containers ],
+  exports: [ components, containers ],
   entryComponents: [
   ]
 })

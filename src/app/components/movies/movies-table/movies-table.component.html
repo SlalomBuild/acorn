@@ -1,22 +1,26 @@
-<h3>Movies</h3>
+<h1>Movies</h1>
 <table>
   <thead>
     <tr>
       <th>Id</th>
-      <th>Title</th>
+      <th [style.width]="'175px'">Title</th>
       <th>Description</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of pagedMovies">
+    <tr *ngFor="let row of pagedMovies; let i = index;">
       <td>{{ row.id }}</td>
-      <td>{{ row.title }}</td>
+      <td [style.width]="'175px'">
+        <a (click)="updateMovie.emit(row.id)">{{ row.title }}</a>
+      </td>
       <td>{{ row.description }}</td>
+      <td><i class="fa fas fa-trash" (click)="deleteRow(row?.id)"></i></td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td>
+      <td colspan="3">
         <button
           [disabled]="currentPage <= 1"
           (click)="setPage(currentPage - 1)"
@@ -25,8 +29,6 @@
           [disabled]="currentPage > movies?.length / pageSize - 1"
           (click)="setPage(currentPage + 1)"
         >></button>
-      </td>
-      <td colspan="2">
         Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ movies?.length }}
       </td>
     </tr>

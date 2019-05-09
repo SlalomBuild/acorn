@@ -1,7 +1,12 @@
 div {
-  background-color: lightgray;
+  background-color: rgba(teal, .12);
   padding: 10px;
   a {
     padding: 10px 20px;
+    color: teal;
+    text-decoration: none;
+  }
+  i {
+    margin-right: 5px;
   }
 }

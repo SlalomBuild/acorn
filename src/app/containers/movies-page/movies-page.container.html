@@ -1,1 +1,9 @@
-<movies-table [movies]="moviesCollection | async"></movies-table>
+<movies-table
+  [movies]="moviesCollection | async"
+  (updateMovie)="onUpdateMovie($event)"
+  (deleteMovie)="onDeleteMovie($event)"
+></movies-table>
+<movie-builder
+  [movies]="moviesCollection | async"
+  (submitMovie)="onSubmitMovie($event)"
+></movie-builder>
