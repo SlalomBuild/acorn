@@ -26,6 +26,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 Navigate to `/mocks/` directory and run `npm run start` to start a mock server on `http://localhost:3002`.
 
+# Features
+* [Rxjs](http://reactivex.io/)
+* Redux (via [ngrx](https://ngrx.io/))
+  * Memoized state (via [reselect](https://github.com/reduxjs/reselect))
+  * Immutable state (via [ngrx-store-freeze](https://github.com/brandonroberts/ngrx-store-freeze))
+* Uses to Slalom's [blackslope](https://github.com/SlalomBuild/blackslope.net) project as a sample API/UI integration
+* Extra code generators (see [Assumptions](#Assumptions) for details)
+
 ## Technologies
 * [angular](https://angular.io/)
 * [ngrx](https://ngrx.io/)
@@ -37,7 +45,7 @@ Navigate to `/mocks/` directory and run `npm run start` to start a mock server o
   * Angular's default generators don't use index files, but Acorn follows the opinion that index files in general and root-level imports in particular are a convenience that enhances the dev experience
 * Smart vs dumb components (aka containers)
   * This pattern is a way of bringing a separation of concerns into your components. By having some top-level components that worry about loading data and network/app-wide interactions you can keep the bulk of your components more straightforward. The idea is that a "smart" component will handle data, network, or global state while a "dumb" component will be predominantly display logic.
-  * [This article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) provides a good write-up on the topic, ableit with react/redux examples.
+  * [This article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) provides a good write-up on the topic, albeit with react/redux examples.
 * Feature-based containers
   * This is largely an attempt to fight container bloat and prevent issues where you have multiple containers trying to track similar pieces of state. Generally speaking, such scenarios should store the relevant application state in your reducers.
   * In Acorn's case, we are trying to not only store that state in redux, but to also split out dedicated containers for reading that state. The prime example of this being `modal.container.ts`.
