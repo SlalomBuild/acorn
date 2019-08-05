@@ -45,6 +45,7 @@ export function reducer(state = initialState, action: ApplicationActions.Actions
   }
 }
 
+export const getModals = (state: State): boolean => state.modals;
 export const getModal = (state: State, modalName: string): boolean => state.modals[modalName];
 export const getLoadingFlags = (state: State): boolean => state.loadingFlags;
 export const getLoadingFlag = (state: State, actionType: string): boolean => state.loadingFlags[actionType];

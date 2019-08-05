@@ -41,14 +41,17 @@ describe('Application Reducer', () => {
   });
 
   it('getLoadingFlags should return all loading flags', () => {
-    const state = ApplicationReducer.reducer(initialState, new ApplicationActions.SetLoadingFlag(key, true));
-    expect(ApplicationReducer.getLoadingFlags(state)).toEqual(initialState.loadingFlags);
+    expect(ApplicationReducer.getLoadingFlags(initialState)).toEqual(initialState.loadingFlags);
   });
 
   it('getLoadingFlag should return designated flag\'s status', () => {
     const key = MoviesActions.actionTypes.REQUEST_MOVIES;
     const state = ApplicationReducer.reducer(initialState, new ApplicationActions.SetLoadingFlag(key, true));
     expect(ApplicationReducer.getLoadingFlag(state, key)).toEqual(true);
+  });
+
+  it('getModals should return designated modal\'s status', () => {
+    expect(ApplicationReducer.getModals(initialState)).toEqual(initialState.modals);
   });
 
   it('getModal should return designated modal\'s status', () => {
