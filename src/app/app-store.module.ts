@@ -12,9 +12,12 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { reducers } from 'app/reducers/store';
 
 import {
+  ApplicationEffects,
   MoviesEffects,
 } from 'app/effects';
+
 const effects = [
+  ApplicationEffects,
   MoviesEffects,
 ];
 

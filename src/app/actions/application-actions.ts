@@ -1,9 +1,23 @@
 import { Action } from '@ngrx/store';
 
 export const actionTypes = {
+  SET_LOADING_FLAG: '[Application] Set loading flag for a network call',
   OPEN_MODAL: '[Application] Opens a particular modal',
   CLOSE_ALL_MODALS: '[Application] Closes every modal',
 };
+
+/**
+ * Action to set loading flag
+ * @param actionType {string} - Type of the action to have its flag set
+ * @param isLoading {boolean} - Flag designating if request is loading or not
+ */
+export class SetLoadingFlag implements Action {
+  type = actionTypes.SET_LOADING_FLAG;
+  constructor(
+    public actionType: string,
+    public isLoading: boolean
+  ) { }
+}
 
 /**
  * Action to open a particular modal
