@@ -32,11 +32,7 @@ Navigate to `/mocks/` directory and run `npm run start` to start a mock server o
   * Memoized state (via [reselect](https://github.com/reduxjs/reselect))
   * Immutable state (via [ngrx-store-freeze](https://github.com/brandonroberts/ngrx-store-freeze))
 * Uses to Slalom's [blackslope](https://github.com/SlalomBuild/blackslope.net) project as a sample API/UI integration
-<<<<<<< HEAD
 * Extra code generators (see `Assumptions` section for details)
-=======
-* Extra code generators (see [Assumptions](#Assumptions) for details)
->>>>>>> cae0ab9493d6d2913d0d800639955e1ccf4c9ec5
 
 ## Technologies
 * [angular](https://angular.io/)
