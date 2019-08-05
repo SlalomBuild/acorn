@@ -3,13 +3,13 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { ModalsContainer } from './modal.container';
+import { ModalContainer } from './modal.container';
 import { ApplicationActions, MoviesActions } from 'app/actions';
 import { Movie } from 'app/models';
 
 describe('ModalContainer', () => {
-  let component: ModalsContainer;
-  let fixture: ComponentFixture<ModalsContainer>;
+  let component: ModalContainer;
+  let fixture: ComponentFixture<ModalContainer>;
   let dispatch, select;
 
   beforeEach(async(() => {
@@ -24,14 +24,14 @@ describe('ModalContainer', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ModalsContainer],
+      declarations: [ModalContainer],
       providers: [storeProvider],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalsContainer);
+    fixture = TestBed.createComponent(ModalContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -48,6 +48,6 @@ describe('ModalContainer', () => {
   it('updateMovie should dispatch an updateMovie action', () => {
     const movie = new Movie();
     component.updateMovie(movie);
-    expect(dispatch).toHaveBeenCalledWith(new MoviesActions.updateMovie(movie));
+    expect(dispatch).toHaveBeenCalledWith(new MoviesActions.UpdateMovie(movie));
   });
 });
