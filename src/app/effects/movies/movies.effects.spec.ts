@@ -81,6 +81,7 @@ describe('Movies Effects', () => {
     });
   }));
 
+
   it('requestMovie should dispatch a SetMovie on success', async(() => {
     const mockData = new Movie({
       id: 1,
@@ -107,7 +108,6 @@ describe('Movies Effects', () => {
   }));
 
 
-
   it('createMovie should dispatch a RequestMovies on success', async(() => {
     createMovie.and.returnValue(Observable.of(new Movie()));
     actions = new ReplaySubject(1);
@@ -117,6 +117,17 @@ describe('Movies Effects', () => {
       expect(result).toEqual(new MoviesActions.RequestMovies());
     });
   }));
+
+  it('createMovie should do something on error', async(() => {
+    createMovie.and.returnValue(Observable.throw({}));
+    actions = new ReplaySubject(1);
+    actions.next(new MoviesActions.CreateMovie(new Movie()));
+
+    effects.createMovie$.subscribe(result => {
+      expect(result).toEqual(new MoviesActions.SetMovies(null));
+    });
+  }));
+
 
   it('updateMovie should dispatch a RequestMovies on success', async(() => {
     updateMovie.and.returnValue(Observable.of(new Movie()));
@@ -128,6 +139,17 @@ describe('Movies Effects', () => {
     });
   }));
 
+  it('updateMovie should do something on error', async(() => {
+    updateMovie.and.returnValue(Observable.throw({}));
+    actions = new ReplaySubject(1);
+    actions.next(new MoviesActions.UpdateMovie(new Movie()));
+
+    effects.updateMovie$.subscribe(result => {
+      expect(result).toEqual(new MoviesActions.SetMovies(null));
+    });
+  }));
+
+
   it('deleteMovie should dispatch a RequestMovies on success', async(() => {
     deleteMovie.and.returnValue(Observable.of(null));
     actions = new ReplaySubject(1);
@@ -135,6 +157,16 @@ describe('Movies Effects', () => {
 
     effects.deleteMovie$.subscribe(result => {
       expect(result).toEqual(new MoviesActions.RequestMovies());
+    });
+  }));
+
+  it('deleteMovie should do something on error', async(() => {
+    deleteMovie.and.returnValue(Observable.throw({}));
+    actions = new ReplaySubject(1);
+    actions.next(new MoviesActions.DeleteMovie(1));
+
+    effects.deleteMovie$.subscribe(result => {
+      expect(result).toEqual(new MoviesActions.SetMovies(null));
     });
   }));
 });

@@ -42,10 +42,6 @@ export class HttpClient {
     return this.request(RequestMethod.Head, url, null, options);
   }
 
-  private setAuthTokenHeader(headers: Headers) {
-    headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-  }
-
   private request(method: RequestMethod, url: string, body?: any, options?: RequestOptionsArgs): Observable<Response> {
     let requestOptions = new RequestOptions(Object.assign({
       method: method,

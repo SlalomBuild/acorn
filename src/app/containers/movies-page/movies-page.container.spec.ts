@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { MoviesPageContainer } from './movies-page.container';
-import { MoviesActions } from 'app/actions';
+import { ApplicationActions, MoviesActions } from 'app/actions';
 import { Movie } from 'app/models';
 
 describe('MoviesPageContainer', () => {
@@ -42,8 +42,19 @@ describe('MoviesPageContainer', () => {
   });
 
   it('onSubmitMovie should submit movie as the payload of a CreateMovie action', () => {
-    const movie = new Movie({id: 5});
+    const movie = new Movie({ id: 5 });
     component.onSubmitMovie(movie);
     expect(dispatch).toHaveBeenCalledWith(new MoviesActions.CreateMovie(movie));
+  });
+
+  it('onUpdateMovie should request movie details and open modal', () => {
+    component.onUpdateMovie(5);
+    expect(dispatch).toHaveBeenCalledWith(new MoviesActions.RequestMovie(5));
+    expect(dispatch).toHaveBeenCalledWith(new ApplicationActions.OpenModal('movie'));
+  });
+
+  it('onDeleteMovie should submit movie as the payload of a CreateMovie action', () => {
+    component.onDeleteMovie(5);
+    expect(dispatch).toHaveBeenCalledWith(new MoviesActions.DeleteMovie(5));
   });
 });
