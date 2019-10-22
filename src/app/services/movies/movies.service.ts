@@ -14,7 +14,7 @@ export class MoviesService {
       .map(res => res.json().map((m) => new Movie(m)));
   }
 
-  getMovie(id: string): Observable<Movie> {
+  getMovie(id: number): Observable<Movie> {
     return this.http.get(serviceEndpoints.movie(id))
       .map(res => new Movie(res.json()));
   }
@@ -29,7 +29,7 @@ export class MoviesService {
       .map(res => new Movie(res.json()));
   }
 
-  deleteMovie(id: string): Observable<void> {
+  deleteMovie(id: number): Observable<void> {
     return this.http.delete(serviceEndpoints.movie(id))
       .map(res => undefined);
   }

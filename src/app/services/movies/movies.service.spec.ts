@@ -50,7 +50,7 @@ describe('Movies Service', () => {
 
   it('getMovie should remap result to movie', (done) => {
     json.and.returnValue(new Movie());
-    service.getMovie('123').subscribe((result) => {
+    service.getMovie(123).subscribe((result) => {
       expect(result instanceof Movie).toEqual(true);
       done();
     });
@@ -74,7 +74,7 @@ describe('Movies Service', () => {
 
   it('deleteMovie should remap result to json', (done) => {
     json.and.returnValue(null);
-    service.deleteMovie('123').subscribe((result) => {
+    service.deleteMovie(123).subscribe((result) => {
       expect(result).toBeUndefined();
       done();
     });

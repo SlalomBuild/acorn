@@ -10,8 +10,8 @@ import { Movie } from 'app/models';
 })
 export class MoviesTableComponent {
   @Input() movies: Movie[];
-  @Output() updateMovie = new EventEmitter<string>();
-  @Output() deleteMovie = new EventEmitter<string>();
+  @Output() updateMovie = new EventEmitter<number>();
+  @Output() deleteMovie = new EventEmitter<number>();
 
   public currentPage = 1;
   public pageSize = 25;
@@ -47,7 +47,7 @@ export class MoviesTableComponent {
     this.onMoviesUpdate();
   }
 
-  deleteRow(id: string) {
+  deleteRow(id: number) {
     this.deleteMovie.emit(id);
   }
 }

@@ -26,12 +26,12 @@ export class MoviesPageContainer implements OnInit {
     this.store.dispatch(new MoviesActions.CreateMovie(movie));
   }
 
-  onUpdateMovie(id: string) {
+  onUpdateMovie(id: number) {
     this.store.dispatch(new MoviesActions.RequestMovie(id));
     this.store.dispatch(new ApplicationActions.OpenModal('movie'));
   }
 
-  onDeleteMovie(id: string) {
+  onDeleteMovie(id: number) {
     this.store.dispatch(new MoviesActions.DeleteMovie(id));
   }
 }

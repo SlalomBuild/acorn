@@ -96,4 +96,10 @@ describe('MoviesTableComponent', () => {
     expect(component.pagedMovies.length).toEqual(5);
     expect(component.pagedMovies).toEqual(component.movies.slice(5));
   });
+
+  it('deleteRow should emit deleteMovie', () => {
+    component.deleteMovie.emit = jasmine.createSpy('emit');
+    component.deleteRow(1);
+    expect(component.deleteMovie.emit).toHaveBeenCalledWith(1);
+  });
 });

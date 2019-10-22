@@ -31,11 +31,11 @@ export class SetMovies implements Action {
 
 /**
  * Action to initiate a request to fetch a specific movie
- * @param payload {string} - Id of movie to be deleted
+ * @param payload {number} - Id of movie to be deleted
  */
 export class RequestMovie implements Action {
   type = actionTypes.REQUEST_MOVIE;
-  constructor(public payload: string) { }
+  constructor(public payload: number) { }
 }
 
 /**
@@ -67,11 +67,11 @@ export class UpdateMovie implements Action {
 
 /**
  * Action to initiate a request to fetch a specific movie
- * @param payload {string} - Id of movie to be deleted
+ * @param payload {number} - Id of movie to be deleted
  */
 export class DeleteMovie implements Action {
   type = actionTypes.DELETE_MOVIE;
-  constructor(public payload: string) { }
+  constructor(public payload: number) { }
 }
 
 export type Actions =

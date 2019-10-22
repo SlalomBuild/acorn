@@ -57,7 +57,7 @@ describe('Movies Effects', () => {
   it('requestMoviesCollection should dispatch a SetMovies on success', async(() => {
     const mockData = [
       new Movie({
-        id: '1',
+        id: 1,
         title: 'Star Wars',
         description: 'All of them.'
       })
@@ -83,13 +83,13 @@ describe('Movies Effects', () => {
 
   it('requestMovie should dispatch a SetMovie on success', async(() => {
     const mockData = new Movie({
-      id: '1',
+      id: 1,
       title: 'Star Wars',
       description: 'All of them.'
     });
     getMovie.and.returnValue(Observable.of(mockData));
     actions = new ReplaySubject(1);
-    actions.next(new MoviesActions.RequestMovie('1'));
+    actions.next(new MoviesActions.RequestMovie(1));
 
     effects.requestMovie$.subscribe(result => {
       expect(result).toEqual(new MoviesActions.SetMovie(mockData));
@@ -99,7 +99,7 @@ describe('Movies Effects', () => {
   it('requestMovie should do something on error', async(() => {
     getMovie.and.returnValue(Observable.throw({}));
     actions = new ReplaySubject(1);
-    actions.next(new MoviesActions.RequestMovie('1'));
+    actions.next(new MoviesActions.RequestMovie(1));
 
     effects.requestMovie$.subscribe(result => {
       expect(result).toEqual(new MoviesActions.SetMovie(null));
@@ -131,7 +131,7 @@ describe('Movies Effects', () => {
   it('deleteMovie should dispatch a RequestMovies on success', async(() => {
     deleteMovie.and.returnValue(Observable.of(null));
     actions = new ReplaySubject(1);
-    actions.next(new MoviesActions.DeleteMovie('1'));
+    actions.next(new MoviesActions.DeleteMovie(1));
 
     effects.deleteMovie$.subscribe(result => {
       expect(result).toEqual(new MoviesActions.RequestMovies());
