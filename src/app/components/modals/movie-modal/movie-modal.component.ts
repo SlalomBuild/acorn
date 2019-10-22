@@ -18,12 +18,20 @@ export class MovieModalComponent {
     this.movieForm = fb.group({
       id: '',
       title: ['', [ Validators.required ]],
-      description: ['', [ Validators.required ]]
+      description: ['', [ Validators.required ]],
+      releaseDate: ['', [ Validators.required ]]
     });
   }
 
-  ngOnChanges() {
-    this.movieForm.patchValue(this.movie);
+  ngOnChanges(changes) {
+    const movie = changes.movie && changes.movie.currentValue;
+    if (movie) {
+      this.movieForm.patchValue({
+        ...this.movie,
+        // html5 requires iso format with no time
+        releaseDate: this.movie.releaseDate.toISOString().split('T')[0]
+      });
+    }
   }
 
   updateMovie() {

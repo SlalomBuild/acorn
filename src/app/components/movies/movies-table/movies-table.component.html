@@ -5,6 +5,7 @@
       <th>Id</th>
       <th [style.width]="'175px'">Title</th>
       <th>Description</th>
+      <th>Release Date</th>
       <th></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
         <a (click)="updateMovie.emit(row.id)">{{ row.title }}</a>
       </td>
       <td>{{ row.description }}</td>
+      <td>{{ row.releaseDate | date:'MM/dd/yyyy' }}</td>
       <td><i class="fa fas fa-trash" (click)="deleteRow(row?.id)"></i></td>
     </tr>
   </tbody>
@@ -26,7 +28,7 @@
           (click)="setPage(currentPage - 1)"
         ><</button>
         <button
-          [disabled]="currentPage > movies?.length / pageSize - 1"
+          [disabled]="currentPage > movies?.length / pageSize"
           (click)="setPage(currentPage + 1)"
         >></button>
         Showing {{ currentPageStart }}-{{ currentPageEnd }} of {{ movies?.length }}

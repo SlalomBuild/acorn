@@ -18,7 +18,8 @@ export class MovieBuilderComponent {
   constructor(public fb: FormBuilder) {
     this.movieForm = fb.group({
       title: ['', [ Validators.required ]],
-      description: ['', [ Validators.required ]]
+      description: ['', [ Validators.required ]],
+      releaseDate: ['', [ Validators.required ]]
     });
   }
 
@@ -27,7 +28,8 @@ export class MovieBuilderComponent {
     if (movies) {
       this.movieForm.setValue({
         title: '',
-        description: ''
+        description: '',
+        releaseDate: ''
       });
       this.movieForm.reset();
       setTimeout(() => this.title.nativeElement.focus(), 10);

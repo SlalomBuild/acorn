@@ -8,6 +8,10 @@
     <label for="description">Description</label>
     <input name="description" type="text" formControlName="description"/>
   </div>
+  <div class="field">
+    <label for="releaseDate">Release Date</label>
+    <input name="releaseDate" type="date" formControlName="releaseDate"/>
+  </div>
   <button
     [disabled]="!movieForm.valid"
     (click)="submit()"

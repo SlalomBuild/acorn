@@ -40,7 +40,7 @@ export class MoviesTableComponent {
   }
 
   setPage(page: number) {
-    if (page <= 0 || page > this.movies.length / this.pageSize) {
+    if (page <= 0 || page > this.movies.length / this.pageSize + 1) {
       return;
     }
     this.currentPage = page;
