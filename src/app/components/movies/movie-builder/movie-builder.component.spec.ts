@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
 
 import { MovieBuilderComponent } from './movie-builder.component';
+import { Movie } from 'app/models';
 
 describe('MovieBuilderComponent', () => {
   let component: MovieBuilderComponent;
@@ -22,5 +23,55 @@ describe('MovieBuilderComponent', () => {
 
   it('should create component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('ngOnChanges should do nothing if movie was not updated', () => {
+    const date = new Date();
+    component.movieForm.setValue({
+      title: 'test title',
+      description: 'test desc',
+      releaseDate: date
+    })
+    component.ngOnChanges({});
+    component.ngOnChanges({ movies: null });
+    expect(component.movieForm.value).toEqual({
+      title: 'test title',
+      description: 'test desc',
+      releaseDate: date
+    });
+  });
+
+  it('ngOnChanges should clear form if the movies array was updated', () => {
+    const date = new Date();
+    const movie = new Movie({
+      title: 'test movie',
+      description: 'desc',
+      releaseDate: date
+    });
+    component.ngOnChanges({
+      movies: new SimpleChange(null, [movie], false)
+    });
+
+    expect(component.movieForm.value).toEqual({
+      title: null,
+      description: null,
+      releaseDate: null
+    });
+  });
+
+  it('submit should emit submitMovie if form is valid', () => {
+    component.submitMovie.emit = jasmine.createSpy('emit');
+    component.submit();
+    expect(component.submitMovie.emit).not.toHaveBeenCalled();
+
+    const date = new Date();
+    const movie = new Movie({
+      title: 'test movie',
+      description: 'desc',
+      releaseDate: date
+    });
+    component.movieForm.patchValue(movie);
+    component.submit();
+    expect(component.submitMovie.emit).toHaveBeenCalled();
   });
 });

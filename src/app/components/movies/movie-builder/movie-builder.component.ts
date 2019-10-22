@@ -26,11 +26,6 @@ export class MovieBuilderComponent {
   ngOnChanges(changes) {
     const movies = changes.movies && changes.movies.currentValue;
     if (movies) {
-      this.movieForm.setValue({
-        title: '',
-        description: '',
-        releaseDate: ''
-      });
       this.movieForm.reset();
       setTimeout(() => this.title.nativeElement.focus(), 10);
     }
