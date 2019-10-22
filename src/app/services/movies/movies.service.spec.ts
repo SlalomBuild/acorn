@@ -41,7 +41,7 @@ describe('Movies Service', () => {
   });
 
   it('getMoviesCollection should remap result to movie[]', (done) => {
-    json.and.returnValue({ data: { movies: [] } });
+    json.and.returnValue([]);
     service.getMoviesCollection().subscribe((result) => {
       expect(json).toHaveBeenCalled();
       done();
@@ -49,7 +49,7 @@ describe('Movies Service', () => {
   });
 
   it('getMovie should remap result to movie', (done) => {
-    json.and.returnValue({ data: { movie: new Movie() } });
+    json.and.returnValue(new Movie());
     service.getMovie('123').subscribe((result) => {
       expect(result instanceof Movie).toEqual(true);
       done();
@@ -57,7 +57,7 @@ describe('Movies Service', () => {
   });
 
   it('updateMovie should remap result to json', (done) => {
-    json.and.returnValue({ data: { movie: new Movie() } });
+    json.and.returnValue(new Movie());
     service.updateMovie(new Movie()).subscribe((result) => {
       expect(result instanceof Movie).toEqual(true);
       done();
@@ -65,7 +65,7 @@ describe('Movies Service', () => {
   });
 
   it('createMovie should remap result to json', (done) => {
-    json.and.returnValue({ data: { movie: new Movie() } });
+    json.and.returnValue(new Movie());
     service.createMovie(new Movie()).subscribe((result) => {
       expect(result instanceof Movie).toEqual(true);
       done();
