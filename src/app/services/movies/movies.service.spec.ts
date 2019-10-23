@@ -7,26 +7,26 @@ import { Movie } from 'app/models';
 describe('Movies Service', () => {
   let service: MoviesService;
   let http: HttpClient;
-  let json;
+  let mockHttp;
 
   beforeEach(() => {
-    json = jasmine.createSpy('json'); // add an .and.returnValue in tests if mock data is required
+    mockHttp = {
+      get: jasmine.createSpy('get').and.returnValue(
+        Observable.of({})
+      ),
+      put: jasmine.createSpy('put').and.returnValue(
+        Observable.of({})
+      ),
+      post: jasmine.createSpy('post').and.returnValue(
+        Observable.of({})
+      ),
+      delete: jasmine.createSpy('delete').and.returnValue(
+        Observable.of({})
+      )
+    };
     const httpProvider = {
       provide: HttpClient,
-      useValue: {
-        get: jasmine.createSpy('get').and.returnValue(
-          Observable.of({ json })
-        ),
-        put: jasmine.createSpy('put').and.returnValue(
-          Observable.of({ json })
-        ),
-        post: jasmine.createSpy('post').and.returnValue(
-          Observable.of({ json })
-        ),
-        delete: jasmine.createSpy('delete').and.returnValue(
-          Observable.of({ json })
-        )
-      }
+      useValue: mockHttp
     };
 
     TestBed.configureTestingModule({
@@ -40,40 +40,37 @@ describe('Movies Service', () => {
     http = TestBed.get(HttpClient);
   });
 
-  it('getMoviesCollection should remap result to movie[]', (done) => {
-    json.and.returnValue([]);
+  it('getMoviesCollection should remap result to Movie[]', (done) => {
+    mockHttp.get.and.returnValue(Observable.of([{}]));
     service.getMoviesCollection().subscribe((result) => {
-      expect(json).toHaveBeenCalled();
+      expect(result[0] instanceof Movie).toEqual(true);
       done();
     });
   });
 
-  it('getMovie should remap result to movie', (done) => {
-    json.and.returnValue(new Movie());
+  it('getMovie should remap result to Movie', (done) => {
     service.getMovie(123).subscribe((result) => {
       expect(result instanceof Movie).toEqual(true);
       done();
     });
   });
 
-  it('updateMovie should remap result to json', (done) => {
-    json.and.returnValue(new Movie());
+  it('updateMovie should remap result to Movie', (done) => {
     service.updateMovie(new Movie()).subscribe((result) => {
       expect(result instanceof Movie).toEqual(true);
       done();
     });
   });
 
-  it('createMovie should remap result to json', (done) => {
-    json.and.returnValue(new Movie());
+  it('createMovie should remap result to Movie', (done) => {
     service.createMovie(new Movie()).subscribe((result) => {
       expect(result instanceof Movie).toEqual(true);
       done();
     });
   });
 
-  it('deleteMovie should remap result to json', (done) => {
-    json.and.returnValue(null);
+  it('deleteMovie should remap result to undefined', (done) => {
+    mockHttp.delete.and.returnValue(Observable.of(null));
     service.deleteMovie(123).subscribe((result) => {
       expect(result).toBeUndefined();
       done();

@@ -4,27 +4,37 @@ import {
   async
 } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
-import {
-  Http,
-  Headers,
-  Response,
-  Request,
-  RequestOptions,
-  ResponseOptions
-} from '@angular/http';
-import { HttpClient } from 'app/services';
 import { Observable } from 'rxjs/Rx';
+import {
+  HttpClient as NgHttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpResponse,
+} from '@angular/common/http';
+
+import { HttpClient, HTTP_VERBS } from 'app/services';
 
 describe('HttpClient Service Methods', () => {
   let httpClient: HttpClient;
-  let http: Http;
+  let http: NgHttpClient;
+  let baseOptions;
   const testTokenVal = 'test';
-  const bearerTestTokenVal = `Bearer ${testTokenVal}`;
 
   const mockHttp = class {
-    request = jasmine.createSpy('request').and.returnValue(Observable.from([new Response(new ResponseOptions())]));
+    request = jasmine.createSpy('request').and.returnValue(Observable.from([new HttpResponse()]));
   };
+
   beforeEach(async(() => {
+    baseOptions = {
+      headers: undefined,
+      params: undefined,
+      body: undefined,
+      observe: 'response',
+      responseType: 'json',
+      reportProgress: false,
+      withCredentials: false
+    };
+
     TestBed.configureTestingModule({
       imports: [
         HttpModule
@@ -32,103 +42,80 @@ describe('HttpClient Service Methods', () => {
       providers: [
         HttpClient,
         {
-          provide: Http,
+          provide: NgHttpClient,
           useClass: mockHttp
         }
       ]
     });
 
-    localStorage.setItem('token', testTokenVal);
     const testBed = getTestBed();
     httpClient = testBed.get(HttpClient);
-    http = testBed.get(Http);
+    http = testBed.get(NgHttpClient);
   }));
 
   it('should perform GET request', () => {
     httpClient.get('').subscribe(() => {
-      const reqOptions = new RequestOptions({
-        method: 'GET',
-        url: '',
+      const options = {
+        ...baseOptions,
         body: null
-      });
+      };
 
-      reqOptions.headers = new Headers();
-      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
-      expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
+      expect(http.request).toHaveBeenCalledWith(HTTP_VERBS.get, '', options);
     });
   });
 
   it('should perform POST request', () => {
     httpClient.post('', {}).subscribe(() => {
-      const reqOptions = new RequestOptions({
-        method: 'POST',
-        url: '',
+      const options = {
+        ...baseOptions,
         body: {}
-      });
+      };
 
-      reqOptions.headers = new Headers();
-      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
-      expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
+      expect(http.request).toHaveBeenCalledWith(HTTP_VERBS.post, '', options);
     });
   });
 
   it('should perform PUT request', () => {
     httpClient.put('', {}).subscribe(() => {
-      const reqOptions = new RequestOptions({
-        method: 'PUT',
-        url: '',
+      const options = {
+        ...baseOptions,
         body: {}
-      });
+      };
 
-      reqOptions.headers = new Headers();
-      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
-      expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
+      expect(http.request).toHaveBeenCalledWith(HTTP_VERBS.put, '', options);
     });
   });
 
   it('should perform DELETE request', () => {
     httpClient.delete('').subscribe(() => {
-      const reqOptions = new RequestOptions({
-        method: 'DELETE',
-        url: '',
+      const options = {
+        ...baseOptions,
         body: null
-      });
+      };
 
-      reqOptions.headers = new Headers();
-      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
-      expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
+      expect(http.request).toHaveBeenCalledWith(HTTP_VERBS.delete, '', options);
     });
   });
 
   it('should perform PATCH request', () => {
     httpClient.patch('', {}).subscribe(() => {
-      const reqOptions = new RequestOptions({
-        method: 'PATCH',
-        url: '',
+      const options = {
+        ...baseOptions,
         body: {}
-      });
+      };
 
-      reqOptions.headers = new Headers();
-      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
-      expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
+      expect(http.request).toHaveBeenCalledWith(HTTP_VERBS.patch, '', options);
     });
   });
 
   it('should perform HEAD request', () => {
-    httpClient.head('', {}).subscribe(() => {
-      const reqOptions = new RequestOptions({
-        method: 'HEAD',
-        url: '',
+    httpClient.head('').subscribe(() => {
+      const options = {
+        ...baseOptions,
         body: null
-      });
+      };
 
-      reqOptions.headers = new Headers();
-      // reqOptions.headers.set('Authorization', bearerTestTokenVal);
-      expect(http.request).toHaveBeenCalledWith(new Request(reqOptions));
+      expect(http.request).toHaveBeenCalledWith(HTTP_VERBS.head, '', options);
     });
-  });
-
-  afterAll(function() {
-    localStorage.removeItem('token');
   });
 });

@@ -4,7 +4,7 @@ import { Action, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
-import { MoviesActions } from 'app/actions';
+import { ApplicationActions, MoviesActions } from 'app/actions';
 import { MoviesService } from 'app/services';
 import * as fromReducers from 'app/reducers/store';
 import { Movie } from 'app/models'
@@ -85,6 +85,7 @@ export class MoviesEffects {
     mergeMap((action: MoviesActions.UpdateMovie) => {
       return this.moviesService.updateMovie(action.payload)
         .map(() => {
+          this.store.dispatch(new ApplicationActions.CloseAllModals());
           return new MoviesActions.RequestMovies();
         })
         .catch(() => {

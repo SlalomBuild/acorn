@@ -1,64 +1,70 @@
 import { Injectable } from '@angular/core';
 import {
-  Http,
-  Headers,
-  RequestOptions,
-  RequestOptionsArgs,
-  Response,
-  RequestMethod,
-  Request
-} from '@angular/http';
+  HttpClient as NgHttpClient,
+  HttpParams,
+  HttpRequest,
+  HttpResponse,
+  HttpHeaders,
+  HttpEvent
+} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs';
 import { omitBy, isNil } from 'lodash';
 
+export const HTTP_VERBS = {
+  get: 'GET',
+  post: 'POST',
+  put: 'PUT',
+  delete: 'DELETE',
+  patch: 'PATCH',
+  head: 'HEAD'
+};
+
 @Injectable()
 export class HttpClient {
-  constructor(public http: Http) {}
+  constructor(public http: NgHttpClient) {}
 
-  public get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.request(RequestMethod.Get, url, null, options);
+  public get<T>(url: string, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
+    return this.request(HTTP_VERBS.get, url, null, params, headers);
   }
 
-  public post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.request(RequestMethod.Post, url, body, options);
+  public post<T>(url: string, body: any, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
+    return this.request(HTTP_VERBS.post, url, body, params, headers);
   }
 
-  public put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.request(RequestMethod.Put, url, body, options);
+  public put<T>(url: string, body: any, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
+    return this.request(HTTP_VERBS.put, url, body, params, headers);
   }
 
-  public delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.request(RequestMethod.Delete, url, null, options);
+  public delete<T>(url: string, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
+    return this.request(HTTP_VERBS.delete, url, null, params, headers);
   }
 
-  public patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.request(RequestMethod.Patch, url, body, options);
+  public patch<T>(url: string, body: any, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
+    return this.request(HTTP_VERBS.patch, url, body, params, headers);
   }
 
-  public head(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.request(RequestMethod.Head, url, null, options);
+  public head<T>(url: string, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
+    return this.request(HTTP_VERBS.head, url, null, params, headers);
   }
 
-  private request(method: RequestMethod, url: string, body?: any, options?: RequestOptionsArgs): Observable<Response> {
-    let requestOptions = new RequestOptions(Object.assign({
-      method: method,
-      url: url,
-      body: body
-    }, omitBy(options, isNil)));
+  private request<T>(method: string, url: string, body?: any, params?: HttpParams, headers?: HttpHeaders): Observable<T> {
+    let requestOptions = (Object.assign({
+      headers,
+      params,
+      body,
+      observe: 'response',
+      responseType: 'json',
+      reportProgress: false,
+      withCredentials: false
+    }, omitBy(params, isNil)));
 
-    if (!requestOptions.headers) {
-      requestOptions.headers = new Headers();
-    }
-
-    // this.setAuthTokenHeader(requestOptions.headers);
-
-    return this.http.request(new Request(requestOptions))
-      .map(res => {
+    return this.http.request<T>(method, url, requestOptions)
+      .map((res: HttpResponse<T>) => {
         // Do anything necessary for logging the response
-        return res;
+        return res.body;
       })
       .catch(err => {
         // Do anything necessary for logging the error

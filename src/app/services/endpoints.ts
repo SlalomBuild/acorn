@@ -1,4 +1,4 @@
-const CONTEXT = 'http://blackslope2.azurewebsites.net/';
+const CONTEXT = 'http://blackslope2.azurewebsites.net';
 // const CONTEXT = 'http://localhost:3002';
 const API = 'api';
 
