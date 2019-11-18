@@ -11,7 +11,7 @@ import { Movie } from 'app/models';
 export class MovieBuilderComponent {
   @Input() movies: Movie[];
   @Output() submitMovie = new EventEmitter<Movie>();
-  @ViewChild('title') title: ElementRef;
+  @ViewChild('title', { static: false }) title: ElementRef;
 
   movieForm: FormGroup;
 

@@ -45,7 +45,7 @@
     pointer-events: none;
   }
 
-  /deep/ modal {
+  :ng-deep modal {
     display: inline-block;
     width: 100%;
   }
