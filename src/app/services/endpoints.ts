@@ -1,5 +1,6 @@
-const CONTEXT = 'http://blackslope2.azurewebsites.net';
-// const CONTEXT = 'http://localhost:3002';
+import { environment } from 'src/environments/environment';
+
+const CONTEXT = environment.apiDomain;
 const API = 'api';
 
 // available api resources

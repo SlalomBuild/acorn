@@ -10,8 +10,8 @@ export class MoviesService {
   constructor(public http: HttpClient) { }
 
   getMoviesCollection(): Observable<Movie[]> {
-    return this.http.get(serviceEndpoints.movies())
-      .map(res => res.map(m => new Movie(m)));
+    return this.http.get<Movie>(serviceEndpoints.movies())
+      .map((res: any) => res.map(m => new Movie(m)));
   }
 
   getMovie(id: number): Observable<Movie> {

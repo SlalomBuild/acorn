@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  apiDomain: 'http://blackslope2.azurewebsites.net',
   production: false,
   hmr: true
 };
