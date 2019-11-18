@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageContainer, MoviesPageContainer } from 'app/containers';
 
 // TODO: consider moving to sub-folder so we can do a group import as these get added
-import { MoviesResolver } from './movies-resolver.resolver';
+import { MoviesResolver } from './resolvers';
 
 const routes: Routes = [
   { path: '', component: HomePageContainer },
