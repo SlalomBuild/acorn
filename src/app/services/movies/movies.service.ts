@@ -10,8 +10,8 @@ export class MoviesService {
   constructor(public http: HttpClient) { }
 
   getMoviesCollection(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(serviceEndpoints.movies())
-      .map(res => res.map((m) => new Movie(m)));
+    return this.http.get(serviceEndpoints.movies())
+      .map(res => res.map(m => new Movie(m)));
   }
 
   getMovie(id: number): Observable<Movie> {
@@ -30,7 +30,6 @@ export class MoviesService {
   }
 
   deleteMovie(id: number): Observable<void> {
-    return this.http.delete<void>(serviceEndpoints.movie(id))
-      .map(res => undefined);
+    return this.http.delete<void>(serviceEndpoints.movie(id));
   }
 }

@@ -72,7 +72,7 @@ describe('Movies Service', () => {
   it('deleteMovie should remap result to undefined', (done) => {
     mockHttp.delete.and.returnValue(Observable.of(null));
     service.deleteMovie(123).subscribe((result) => {
-      expect(result).toBeUndefined();
+      expect(result).toBeNull();
       done();
     });
   });
