@@ -9,6 +9,7 @@ import {
   MovieBuilderComponent,
   ModalComponent,
   MovieModalComponent,
+  SpinnerComponent
 } from 'app/components';
 
 const components = [
@@ -17,6 +18,7 @@ const components = [
   MovieBuilderComponent,
   ModalComponent,
   MovieModalComponent,
+  SpinnerComponent
 ];
 
 import {
