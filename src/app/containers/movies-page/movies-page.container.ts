@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import * as fromReducers from 'app/reducers/store';
@@ -12,7 +13,8 @@ import { Movie } from 'app/models';
   styleUrls: ['./movies-page.container.scss']
 })
 export class MoviesPageContainer implements OnInit {
-  public moviesCollection: Observable<Movie[]> = null;
+  moviesCollection: Observable<Movie[]> = null;
+  isLoading: Observable<boolean> = null;
 
   constructor(
     public store: Store<fromReducers.State>
@@ -20,6 +22,12 @@ export class MoviesPageContainer implements OnInit {
 
   ngOnInit() {
     this.moviesCollection = this.store.select(fromReducers.getMoviesCollection);
+    this.isLoading = combineLatest([
+      this.store.select(fromReducers.getLoadingFlag(MoviesActions.actionTypes.REQUEST_MOVIES)),
+      this.store.select(fromReducers.getLoadingFlag(MoviesActions.actionTypes.REQUEST_MOVIE))
+    ]).pipe(
+      map(([isMoviesLoading, isMovieLoading]) => isMoviesLoading || isMovieLoading)
+    );
   }
 
   onSubmitMovie(movie: Movie) {

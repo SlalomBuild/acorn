@@ -1,3 +1,4 @@
+<spinner *ngIf="isLoading | async"></spinner>
 <movies-table
   [movies]="moviesCollection | async"
   (updateMovie)="onUpdateMovie($event)"
