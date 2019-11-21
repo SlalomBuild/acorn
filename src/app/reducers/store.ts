@@ -33,6 +33,10 @@ export const getModal = (modal: string) => {
     (state): boolean => fromApplication.getModal(state, modal)
   );
 };
+export const getLoadingFlag = (actionType: string) => createSelector(
+  getApplicationState,
+  (state): boolean => fromApplication.getLoadingFlag(state, actionType)
+);
 
 // Movie State and Selectors
 export const getMoviesState = (state: State) => state.movies;
