@@ -13,16 +13,16 @@ import { Movie } from 'app/models';
   styleUrls: ['./movies-page.container.scss']
 })
 export class MoviesPageContainer implements OnInit {
-  moviesCollection: Observable<Movie[]> = null;
-  isLoading: Observable<boolean> = null;
+  moviesCollection$: Observable<Movie[]> = null;
+  isLoading$: Observable<boolean> = null;
 
   constructor(
     public store: Store<fromReducers.State>
   ) { }
 
   ngOnInit() {
-    this.moviesCollection = this.store.select(fromReducers.getMoviesCollection);
-    this.isLoading = combineLatest([
+    this.moviesCollection$ = this.store.select(fromReducers.getMoviesCollection);
+    this.isLoading$ = combineLatest([
       this.store.select(fromReducers.getLoadingFlag(MoviesActions.actionTypes.REQUEST_MOVIES)),
       this.store.select(fromReducers.getLoadingFlag(MoviesActions.actionTypes.REQUEST_MOVIE))
     ]).pipe(
