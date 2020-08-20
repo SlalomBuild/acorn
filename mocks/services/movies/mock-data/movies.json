@@ -1,6 +1,4 @@
-{
-  "data": {
-    "movies": [
+[
       {
         "title": "The Shawshank Redemption",
         "description": "1",
@@ -501,7 +499,4 @@
         "description": "100",
         "id": "tt0097576"
       }
-
-    ]
-}
-}
+]

@@ -5,8 +5,8 @@
   "license": "UNLICENSED",
   "private": true,
   "author": {
-    "name": "Tony Bergeron",
-    "email": "tonyb@slalom.com"
+    "name": "Paul Stahmer",
+    "email": "paul.stahmer@slalom.com"
   },
   "main": "core-mock-services.js",
   "scripts": {

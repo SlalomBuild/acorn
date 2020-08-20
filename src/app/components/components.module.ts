@@ -9,6 +9,7 @@ import {
   MovieBuilderComponent,
   ModalComponent,
   MovieModalComponent,
+  ConfigDisplayComponent,
 } from 'app/components';
 
 const components = [
@@ -17,6 +18,7 @@ const components = [
   MovieBuilderComponent,
   ModalComponent,
   MovieModalComponent,
+  ConfigDisplayComponent,
 ];
 
 import {

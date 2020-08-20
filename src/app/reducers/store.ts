@@ -10,6 +10,7 @@ import * as fromRouter from '@ngrx/router-store';
  */
 import * as fromApplication from './application';
 import * as fromMovies from './movies';
+import * as fromConfig from './config';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -18,11 +19,13 @@ import * as fromMovies from './movies';
 export interface State {
   application: fromApplication.State;
   movies: fromMovies.State;
+  config: fromConfig.State;
 };
 
 export const reducers = {
   application: fromApplication.reducer,
   movies: fromMovies.reducer,
+  config: fromConfig.reducer,
 };
 
 // Application State and Selectors
@@ -38,3 +41,7 @@ export const getModal = (modal: string) => {
 export const getMoviesState = (state: State) => state.movies;
 export const getMoviesCollection = createSelector(getMoviesState, fromMovies.getMoviesCollection);
 export const getMovie = createSelector(getMoviesState, fromMovies.getMovie);
+
+// Config State and Selectors
+export const getConfigState = (state: State) => state.config;
+export const getConfig = createSelector(getConfigState, fromConfig.getConfig);

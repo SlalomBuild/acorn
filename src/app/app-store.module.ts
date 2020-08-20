@@ -14,11 +14,13 @@ import { reducers } from 'app/reducers/store';
 import {
   ApplicationEffects,
   MoviesEffects,
+  ConfigEffects,
 } from 'app/effects';
 
 const effects = [
   ApplicationEffects,
   MoviesEffects,
+  ConfigEffects,
 ];
 
 @NgModule({

@@ -24,6 +24,7 @@ import { ServicesModule } from 'app/services/services.module';
     ComponentsModule,
     AppStoreModule,
     ServicesModule,
+    // todo: store module?
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
