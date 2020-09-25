@@ -5,8 +5,8 @@ import { Movie } from 'app/models';
 export const actionTypes = {
   REQUEST_MOVIES: '[Movies] Request movies collection',
   SET_MOVIES:     '[Movies] Set movies collection',
-  REQUEST_MOVIE:  '[Movies] Request movie by id',
-  SET_MOVIE:      '[Movies] Set movie movie details',
+  REQUEST_MOVIE:  '[Movies] Request movie details',
+  SET_MOVIE:      '[Movies] Set movie details',
   CREATE_MOVIE:   '[Movies] Request to create a new movie',
   UPDATE_MOVIE:   '[Movies] Request to update an existing movie',
   DELETE_MOVIE:   '[Movies] Request to delete an existing movie',

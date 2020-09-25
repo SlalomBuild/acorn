@@ -1,9 +1,10 @@
+<app-spinner *ngIf="isLoading$ | async"></app-spinner>
 <app-movies-table
-  [movies]="moviesCollection | async"
+  [movies]="moviesCollection$ | async"
   (updateMovie)="onUpdateMovie($event)"
   (deleteMovie)="onDeleteMovie($event)"
 ></app-movies-table>
 <app-movie-builder
-  [movies]="moviesCollection | async"
+  [movies]="moviesCollection$ | async"
   (submitMovie)="onSubmitMovie($event)"
 ></app-movie-builder>

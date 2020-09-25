@@ -10,6 +10,7 @@ import {
   ModalComponent,
   MovieModalComponent,
   ConfigDisplayComponent,
+  SpinnerComponent
 } from 'app/components';
 
 const components = [
@@ -19,6 +20,7 @@ const components = [
   ModalComponent,
   MovieModalComponent,
   ConfigDisplayComponent,
+  SpinnerComponent
 ];
 
 import {

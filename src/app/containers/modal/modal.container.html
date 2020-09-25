@@ -1,5 +1,5 @@
 <div
-  *ngIf="isMovieOpen | async"
+  *ngIf="isMovieOpen$ | async"
   class="modal-container"
 >
   <div
@@ -8,10 +8,10 @@
   ></div>
   <div class="modal-wrapper">
     <div class="alignment-helper"></div>
-    <app-movie-modal
-      *ngIf="isMovieOpen | async"
-      [movie]="movie | async"
-      (update)="updateMovie($event)"
-    ></app-movie-modal>
+      <app-movie-modal
+        *ngIf="isMovieOpen | async"
+        [movie]="movie | async"
+        (update)="updateMovie($event)"
+      ></app-movie-modal>
   </div>
 </div>

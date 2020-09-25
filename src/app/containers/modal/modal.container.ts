@@ -17,18 +17,18 @@ import { Movie } from 'app/models';
 })
 export class ModalContainerComponent implements OnInit {
   // open/closed flags
-  isMovieOpen: Observable<boolean>;
+  isMovieOpen$: Observable<boolean>;
 
   // individual modal data
-  movie: Observable<Movie>;
+  movie$: Observable<Movie>;
 
   constructor(
     public store: Store<fromReducers.State>
   ) { }
 
   ngOnInit() {
-    this.isMovieOpen = this.store.select(fromReducers.getModal('movie'));
-    this.movie = this.store.select(fromReducers.getMovie);
+    this.isMovieOpen$ = this.store.select(fromReducers.getModal('movie'));
+    this.movie$ = this.store.select(fromReducers.getMovie);
   }
 
   @HostListener('document:keydown.escape', ['$event'])
