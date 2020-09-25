@@ -1,3 +1,5 @@
+@import 'src/colors.scss';
+
 .movie-builder {
   .field {
     display: inline-block;
@@ -7,6 +9,6 @@
     display: block;
   }
   .ng-invalid.ng-dirty {
-    border: 2px inset red;
+    border: 2px inset $red;
   }
 }

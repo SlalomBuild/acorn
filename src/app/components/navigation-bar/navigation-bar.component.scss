@@ -1,9 +1,11 @@
+@import 'src/colors.scss';
+
 div {
-  background-color: rgba(teal, .12);
+  background-color: rgba($teal, .12);
   padding: 10px;
   a {
     padding: 10px 20px;
-    color: teal;
+    color: $teal;
     text-decoration: none;
   }
   i {

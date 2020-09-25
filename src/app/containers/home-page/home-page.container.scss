@@ -1,0 +1,11 @@
+@import 'src/colors.scss';
+
+.footer {
+  background-color: rgba($teal, .12);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 6px;
+  margin-left: -20px;
+  padding-left: 26px;
+}
