@@ -1,31 +1,23 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-import { HttpClient, MoviesService } from 'app/services';
+import { HttpService, MoviesService } from 'app/services';
 import { Movie } from 'app/models';
 
 describe('Movies Service', () => {
   let service: MoviesService;
-  let http: HttpClient;
+  let http: HttpService;
   let mockHttp;
 
   beforeEach(() => {
     mockHttp = {
-      get: jasmine.createSpy('get').and.returnValue(
-        Observable.of({})
-      ),
-      put: jasmine.createSpy('put').and.returnValue(
-        Observable.of({})
-      ),
-      post: jasmine.createSpy('post').and.returnValue(
-        Observable.of({})
-      ),
-      delete: jasmine.createSpy('delete').and.returnValue(
-        Observable.of({})
-      )
+      get: jasmine.createSpy('get').and.returnValue(of({})),
+      put: jasmine.createSpy('put').and.returnValue(of({})),
+      post: jasmine.createSpy('post').and.returnValue(of({})),
+      delete: jasmine.createSpy('delete').and.returnValue(of({}))
     };
     const httpProvider = {
-      provide: HttpClient,
+      provide: HttpService,
       useValue: mockHttp
     };
 
@@ -37,11 +29,11 @@ describe('Movies Service', () => {
     });
 
     service = TestBed.get(MoviesService);
-    http = TestBed.get(HttpClient);
+    http = TestBed.get(HttpService);
   });
 
   it('getMoviesCollection should remap result to Movie[]', (done) => {
-    mockHttp.get.and.returnValue(Observable.of([{}]));
+    mockHttp.get.and.returnValue(of([{}]));
     service.getMoviesCollection().subscribe((result) => {
       expect(result[0] instanceof Movie).toEqual(true);
       done();
@@ -70,7 +62,7 @@ describe('Movies Service', () => {
   });
 
   it('deleteMovie should remap result to undefined', (done) => {
-    mockHttp.delete.and.returnValue(Observable.of(null));
+    mockHttp.delete.and.returnValue(of(null));
     service.deleteMovie(123).subscribe((result) => {
       expect(result).toBeNull();
       done();

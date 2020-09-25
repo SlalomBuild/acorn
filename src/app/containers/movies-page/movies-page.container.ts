@@ -11,7 +11,7 @@ import { Movie } from 'app/models';
   templateUrl: './movies-page.container.html',
   styleUrls: ['./movies-page.container.scss']
 })
-export class MoviesPageContainer implements OnInit {
+export class MoviesPageComponent implements OnInit {
   public moviesCollection: Observable<Movie[]> = null;
 
   constructor(

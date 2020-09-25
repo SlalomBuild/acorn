@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import {
-  HttpClient,
+  HttpService,
   MoviesService,
   ConfigService,
 } from 'app/services';
 const services = [
-  HttpClient,
+  HttpService,
   MoviesService,
   ConfigService,
 ];

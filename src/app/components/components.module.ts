@@ -22,15 +22,15 @@ const components = [
 ];
 
 import {
-  HomePageContainer,
-  MoviesPageContainer,
-  ModalContainer,
+  HomePageComponent,
+  MoviesPageComponent,
+  ModalContainerComponent,
 } from 'app/containers';
 
 const containers = [
-  HomePageContainer,
-  MoviesPageContainer,
-  ModalContainer,
+  HomePageComponent,
+  MoviesPageComponent,
+  ModalContainerComponent,
 ];
 
 /**

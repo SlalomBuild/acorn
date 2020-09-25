@@ -1,8 +1,8 @@
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { mergeMap, map, catchError } from 'rxjs/operators';
 
 import { ConfigActions } from 'app/actions';
 import { ConfigService } from 'app/services';
@@ -26,13 +26,14 @@ export class ConfigEffects {
   requestConfig$: Observable<Action> = this.actions$.pipe(
     ofType(ConfigActions.actionTypes.REQUEST_CONFIG),
     mergeMap((action: ConfigActions.RequestConfig) => {
-      return this.configService.getConfig()
-        .map((res: Config) => {
+      return this.configService.getConfig().pipe(
+        map((res: Config) => {
           return new ConfigActions.SetConfig(res);
+        }),
+        catchError(() => {
+          return of(new ConfigActions.SetConfig(null));
         })
-        .catch(() => {
-          return Observable.of(new ConfigActions.SetConfig(null));
-        });
+      );
     })
   );
 }

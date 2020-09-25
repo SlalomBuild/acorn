@@ -58,8 +58,8 @@ describe('MovieModalComponent', () => {
   });
 
   it('updateMovie should emit onUpdate', () => {
-    component.onUpdate.emit = jasmine.createSpy('emit');
+    component.update.emit = jasmine.createSpy('emit');
     component.updateMovie();
-    expect(component.onUpdate.emit).toHaveBeenCalled();
+    expect(component.update.emit).toHaveBeenCalled();
   });
 });

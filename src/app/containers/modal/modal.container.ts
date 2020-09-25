@@ -15,7 +15,7 @@ import { Movie } from 'app/models';
   templateUrl: './modal.container.html',
   styleUrls: ['./modal.container.scss']
 })
-export class ModalContainer implements OnInit {
+export class ModalContainerComponent implements OnInit {
   // open/closed flags
   isMovieOpen: Observable<boolean>;
 

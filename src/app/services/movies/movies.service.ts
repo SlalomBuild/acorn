@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { HttpClient } from '../http-client';
+import { HttpService } from '../http-client';
 import serviceEndpoints from '../endpoints';
 import { Movie } from 'app/models';
 
 @Injectable()
 export class MoviesService {
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpService) { }
 
   getMoviesCollection(): Observable<Movie[]> {
-    return this.http.get<Movie>(serviceEndpoints.movies())
+    return this.http.get(serviceEndpoints.movies())
       .map((res: any) => res.map(m => new Movie(m)));
   }
 
   getMovie(id: number): Observable<Movie> {
-    return this.http.get<Movie>(serviceEndpoints.movie(id))
+    return this.http.get(serviceEndpoints.movie(id))
       .map(res => new Movie(res));
   }
 
   updateMovie(movie: Movie): Observable<Movie> {
-    return this.http.put<Movie>(serviceEndpoints.movie(movie.id), movie)
+    return this.http.put(serviceEndpoints.movie(movie.id), movie)
       .map(res => new Movie(res));
   }
 
   createMovie(movie: Movie): Observable<Movie> {
-    return this.http.post<Movie>(serviceEndpoints.movies(), movie)
+    return this.http.post(serviceEndpoints.movies(), movie)
       .map(res => new Movie(res));
   }
 
   deleteMovie(id: number): Observable<void> {
-    return this.http.delete<void>(serviceEndpoints.movie(id));
+    return this.http.delete(serviceEndpoints.movie(id));
   }
 }

@@ -11,7 +11,7 @@ import { Config } from 'app/models';
   templateUrl: './home-page.container.html',
   styleUrls: ['./home-page.container.scss']
 })
-export class HomePageContainer implements OnInit {
+export class HomePageComponent implements OnInit {
   title = 'Acorn js';
   config: Observable<Config> = null;
 

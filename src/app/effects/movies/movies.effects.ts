@@ -2,7 +2,7 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, catchError, map } from 'rxjs/operators';
 
 import { ApplicationActions, MoviesActions } from 'app/actions';
 import { MoviesService } from 'app/services';
@@ -26,13 +26,14 @@ export class MoviesEffects {
   requestMoviesCollection$: Observable<Action> = this.actions$.pipe(
     ofType(MoviesActions.actionTypes.REQUEST_MOVIES),
     mergeMap((action: MoviesActions.RequestMovies) => {
-      return this.moviesService.getMoviesCollection()
-        .map((res: Movie[]) => {
+      return this.moviesService.getMoviesCollection().pipe(
+        map((res: Movie[]) => {
           return new MoviesActions.SetMovies(res);
-        })
-        .catch(() => {
+        }),
+        catchError(() => {
           return of(new MoviesActions.SetMovies(null));
-        });
+        })
+      );
     })
   );
 
@@ -45,13 +46,14 @@ export class MoviesEffects {
   requestMovie$: Observable<Action> = this.actions$.pipe(
     ofType(MoviesActions.actionTypes.REQUEST_MOVIE),
     mergeMap((action: MoviesActions.RequestMovie) => {
-      return this.moviesService.getMovie(action.payload)
-        .map((res: Movie) => {
+      return this.moviesService.getMovie(action.payload).pipe(
+        map((res: Movie) => {
           return new MoviesActions.SetMovie(res);
-        })
-        .catch(() => {
+        }),
+        catchError(() => {
           return of(new MoviesActions.SetMovie(null));
-        });
+        })
+      );
     })
   );
 
@@ -64,13 +66,14 @@ export class MoviesEffects {
   createMovie$: Observable<Action> = this.actions$.pipe(
     ofType(MoviesActions.actionTypes.CREATE_MOVIE),
     mergeMap((action: MoviesActions.CreateMovie) => {
-      return this.moviesService.createMovie(action.payload)
-        .map(() => {
+      return this.moviesService.createMovie(action.payload).pipe(
+        map(() => {
           return new MoviesActions.RequestMovies();
-        })
-        .catch(() => {
+        }),
+        catchError(() => {
           return of(new MoviesActions.SetMovies(null));
-        });
+        })
+      );
     })
   );
 
@@ -83,14 +86,15 @@ export class MoviesEffects {
   updateMovie$: Observable<Action> = this.actions$.pipe(
     ofType(MoviesActions.actionTypes.UPDATE_MOVIE),
     mergeMap((action: MoviesActions.UpdateMovie) => {
-      return this.moviesService.updateMovie(action.payload)
-        .map(() => {
+      return this.moviesService.updateMovie(action.payload).pipe(
+        map(() => {
           this.store.dispatch(new ApplicationActions.CloseAllModals());
           return new MoviesActions.RequestMovies();
-        })
-        .catch(() => {
+        }),
+        catchError(() => {
           return of(new MoviesActions.SetMovies(null));
-        });
+        })
+      );
     })
   );
 
@@ -103,13 +107,14 @@ export class MoviesEffects {
   deleteMovie$: Observable<Action> = this.actions$.pipe(
     ofType(MoviesActions.actionTypes.DELETE_MOVIE),
     mergeMap((action: MoviesActions.DeleteMovie) => {
-      return this.moviesService.deleteMovie(action.payload)
-        .map(() => {
+      return this.moviesService.deleteMovie(action.payload).pipe(
+        map(() => {
           return new MoviesActions.RequestMovies();
-        })
-        .catch(() => {
+        }),
+        catchError(() => {
           return of(new MoviesActions.SetMovies(null));
-        });
+        })
+      );
     })
   );
 }

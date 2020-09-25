@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Store } from '@ngrx/store';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Observable } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 
 import { MoviesEffects } from 'app/effects';
 import { MoviesActions } from 'app/actions';
@@ -61,7 +61,7 @@ describe('Movies Effects', () => {
         description: 'All of them.'
       })
     ];
-    getMoviesCollection.and.returnValue(Observable.of(mockData));
+    getMoviesCollection.and.returnValue(of(mockData));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.RequestMovies());
 
@@ -71,7 +71,7 @@ describe('Movies Effects', () => {
   }));
 
   it('requestMoviesCollection should do something on error', async(() => {
-    getMoviesCollection.and.returnValue(Observable.throwError({}));
+    getMoviesCollection.and.returnValue(throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.RequestMovies());
 
@@ -87,7 +87,7 @@ describe('Movies Effects', () => {
       title: 'Star Wars',
       description: 'All of them.'
     });
-    getMovie.and.returnValue(Observable.of(mockData));
+    getMovie.and.returnValue(of(mockData));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.RequestMovie(1));
 
@@ -97,7 +97,7 @@ describe('Movies Effects', () => {
   }));
 
   it('requestMovie should do something on error', async(() => {
-    getMovie.and.returnValue(Observable.throwError({}));
+    getMovie.and.returnValue(throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.RequestMovie(1));
 
@@ -108,7 +108,7 @@ describe('Movies Effects', () => {
 
 
   it('createMovie should dispatch a RequestMovies on success', async(() => {
-    createMovie.and.returnValue(Observable.of(new Movie()));
+    createMovie.and.returnValue(of(new Movie()));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.CreateMovie(new Movie()));
 
@@ -118,7 +118,7 @@ describe('Movies Effects', () => {
   }));
 
   it('createMovie should do something on error', async(() => {
-    createMovie.and.returnValue(Observable.throwError({}));
+    createMovie.and.returnValue(throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.CreateMovie(new Movie()));
 
@@ -129,7 +129,7 @@ describe('Movies Effects', () => {
 
 
   it('updateMovie should dispatch a RequestMovies on success', async(() => {
-    updateMovie.and.returnValue(Observable.of(new Movie()));
+    updateMovie.and.returnValue(of(new Movie()));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.UpdateMovie(new Movie()));
 
@@ -139,7 +139,7 @@ describe('Movies Effects', () => {
   }));
 
   it('updateMovie should do something on error', async(() => {
-    updateMovie.and.returnValue(Observable.throwError({}));
+    updateMovie.and.returnValue(throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.UpdateMovie(new Movie()));
 
@@ -150,7 +150,7 @@ describe('Movies Effects', () => {
 
 
   it('deleteMovie should dispatch a RequestMovies on success', async(() => {
-    deleteMovie.and.returnValue(Observable.of(null));
+    deleteMovie.and.returnValue(of(null));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.DeleteMovie(1));
 
@@ -160,7 +160,7 @@ describe('Movies Effects', () => {
   }));
 
   it('deleteMovie should do something on error', async(() => {
-    deleteMovie.and.returnValue(Observable.throwError({}));
+    deleteMovie.and.returnValue(throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.DeleteMovie(1));
 

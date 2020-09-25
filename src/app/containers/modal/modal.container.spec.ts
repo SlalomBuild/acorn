@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-import { ModalContainer } from './modal.container';
+import { ModalContainerComponent } from './modal.container';
 import { ApplicationActions, MoviesActions } from 'app/actions';
 import { Movie } from 'app/models';
 
-describe('ModalContainer', () => {
-  let component: ModalContainer;
-  let fixture: ComponentFixture<ModalContainer>;
+describe('ModalContainerComponent', () => {
+  let component: ModalContainerComponent;
+  let fixture: ComponentFixture<ModalContainerComponent>;
   let dispatch, select;
 
   beforeEach(async(() => {
     dispatch = jasmine.createSpy('dispatch');
-    select = jasmine.createSpy('select').and.returnValue(Observable.of([]));
+    select = jasmine.createSpy('select').and.returnValue(of([]));
     const storeProvider = {
       provide: Store,
       useValue: {
@@ -24,14 +24,14 @@ describe('ModalContainer', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ModalContainer],
+      declarations: [ModalContainerComponent],
       providers: [storeProvider],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalContainer);
+    fixture = TestBed.createComponent(ModalContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

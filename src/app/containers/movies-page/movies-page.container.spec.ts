@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-import { MoviesPageContainer } from './movies-page.container';
+import { MoviesPageComponent } from './movies-page.container';
 import { ApplicationActions, MoviesActions } from 'app/actions';
 import { Movie } from 'app/models';
 
-describe('MoviesPageContainer', () => {
-  let component: MoviesPageContainer;
-  let fixture: ComponentFixture<MoviesPageContainer>;
+describe('MoviesPageComponent', () => {
+  let component: MoviesPageComponent;
+  let fixture: ComponentFixture<MoviesPageComponent>;
   let dispatch, select;
 
   beforeEach(() => {
     // set dispatch/select values here so that the spies reset between tests
     dispatch = jasmine.createSpy('dispatch');
-    select = jasmine.createSpy('select').and.returnValue(Observable.of([]));
+    select = jasmine.createSpy('select').and.returnValue(of([]));
     const storeProvider = {
       provide: Store,
       useValue: {
@@ -24,7 +24,7 @@ describe('MoviesPageContainer', () => {
       }
     };
     TestBed.configureTestingModule({
-      declarations: [ MoviesPageContainer ],
+      declarations: [ MoviesPageComponent ],
       providers: [ storeProvider ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
@@ -32,7 +32,7 @@ describe('MoviesPageContainer', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MoviesPageContainer);
+    fixture = TestBed.createComponent(MoviesPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

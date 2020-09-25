@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Store } from '@ngrx/store';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import { ConfigEffects } from 'app/effects';
 import { ConfigActions } from 'app/actions';
@@ -44,7 +44,7 @@ describe('Config Effects', () => {
 
   it('requestConfig should dispatch a SetConfig on success', async(() => {
     const mockData = new Config();
-    getConfig.and.returnValue(Observable.of(mockData));
+    getConfig.and.returnValue(of(mockData));
     actions = new ReplaySubject(1);
     actions.next(new ConfigActions.RequestConfig());
 
@@ -54,7 +54,7 @@ describe('Config Effects', () => {
   }));
 
   it('requestConfig should do something on error', async(() => {
-    getConfig.and.returnValue(Observable.throwError({}));
+    getConfig.and.returnValue(throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new ConfigActions.RequestConfig());
 

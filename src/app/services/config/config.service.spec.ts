@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-import { HttpClient, ConfigService } from 'app/services';
+import { HttpService, ConfigService } from 'app/services';
+import { Config } from 'app/models';
 
 describe('Config Service', () => {
   let service: ConfigService;
   let get;
 
   beforeEach(() => {
-    get = jasmine.createSpy('get').and.returnValue(Observable.of(null));
+    get = jasmine.createSpy('get').and.returnValue(of(null));
     const httpProvider = {
-      provide: HttpClient,
+      provide: HttpService,
       useValue: {
         get: get
       }
@@ -27,7 +28,7 @@ describe('Config Service', () => {
   });
 
   it('getConfig should remap result to Config', (done) => {
-    get.and.returnValue(Observable.of({  }));
+    get.and.returnValue(of({  }));
     service.getConfig().subscribe((res) => {
       expect(res).toEqual(new Config());
       done();

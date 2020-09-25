@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomePageContainer, MoviesPageContainer } from 'app/containers';
+import { HomePageComponent, MoviesPageComponent } from 'app/containers';
 import { MoviesResolver } from './resolvers';
 
 const routes: Routes = [
-  { path: '', component: HomePageContainer },
+  { path: '', component: HomePageComponent },
   {
     path: 'movies',
-    component: MoviesPageContainer,
+    component: MoviesPageComponent,
     resolve: {
       data: MoviesResolver
     }
