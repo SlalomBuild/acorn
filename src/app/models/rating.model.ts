@@ -10,4 +10,4 @@ export class Rating {
     this.movieId = obj.movieId;
     this.rating = obj.rating;
   }
-};
+}

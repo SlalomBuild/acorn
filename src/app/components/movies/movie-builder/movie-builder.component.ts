@@ -1,14 +1,14 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Movie } from 'app/models';
 
 @Component({
-  selector: 'movie-builder',
+  selector: 'app-movie-builder',
   templateUrl: './movie-builder.component.html',
   styleUrls: ['./movie-builder.component.scss']
 })
-export class MovieBuilderComponent {
+export class MovieBuilderComponent implements OnChanges {
   @Input() movies: Movie[];
   @Output() submitMovie = new EventEmitter<Movie>();
   @ViewChild('title', { static: false }) title: ElementRef;

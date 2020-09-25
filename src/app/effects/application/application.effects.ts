@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { mergeMap, map, filter } from 'rxjs/operators';
 
 import { ApplicationActions } from 'app/actions';
-import * as allActions  from 'app/actions';
+import * as allActions from 'app/actions';
 import * as s from 'app/reducers/store';
 
 @Injectable()
@@ -23,7 +23,7 @@ export class ApplicationEffects {
     // we have an array of objects, but still need to flatten these out into a regular array
     this.allActionTypes = actionTypeCollection
       .map(typesObject => Object.keys(typesObject).map(key => typesObject[key]))
-      .reduce((a, b) => [...a, ...b])
+      .reduce((a, b) => [...a, ...b]);
   }
 
   /*

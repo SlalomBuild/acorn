@@ -19,7 +19,7 @@ describe('Application Effects', () => {
       useValue: {
         dispatch
       }
-    }
+    };
 
     TestBed.configureTestingModule({
       providers: [

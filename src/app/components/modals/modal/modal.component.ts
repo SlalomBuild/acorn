@@ -5,7 +5,7 @@ import { State } from 'app/reducers/store';
 import { ApplicationActions } from 'app/actions';
 
 @Component({
-  selector: 'modal',
+  selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
@@ -19,4 +19,4 @@ export class ModalComponent {
   closeAllModals() {
     this.store.dispatch(new ApplicationActions.CloseAllModals());
   }
-};
+}

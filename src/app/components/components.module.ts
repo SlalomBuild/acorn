@@ -36,7 +36,6 @@ const containers = [
 /**
  * Contains sharable components accessible to all containers in the application
  * @export
- * @class ComponentsModule
  */
 @NgModule({
   imports: [

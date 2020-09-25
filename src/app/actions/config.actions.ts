@@ -16,7 +16,7 @@ export class RequestConfig implements Action {
 
 /**
  * Action to set config
- * @param payload {Config} - collection of config
+ * @param payload - collection of config
  */
 export class SetConfig implements Action {
   type = actionTypes.SET_CONFIG;

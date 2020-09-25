@@ -7,7 +7,7 @@ import { ApplicationActions, MoviesActions } from 'app/actions';
 import { Movie } from 'app/models';
 
 @Component({
-  selector: 'movies-page',
+  selector: 'app-movies-page',
   templateUrl: './movies-page.container.html',
   styleUrls: ['./movies-page.container.scss']
 })

@@ -12,4 +12,4 @@ export class Movie {
     this.description = obj.description;
     this.releaseDate = obj.releaseDate ? new Date(obj.releaseDate) : undefined;
   }
-};
+}

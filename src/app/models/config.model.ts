@@ -8,4 +8,4 @@ export class Config {
     this.version = obj.version;
     this.isEditable = obj.isEditable;
   }
-};
+}

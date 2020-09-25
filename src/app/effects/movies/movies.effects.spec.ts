@@ -11,7 +11,6 @@ import { Movie } from 'app/models';
 
 describe('Movies Effects', () => {
   let effects: MoviesEffects;
-  let service: MoviesService;
   let actions: ReplaySubject<any>;
   let getMoviesCollection, getMovie, createMovie, updateMovie, deleteMovie;
   let dispatch;
@@ -40,7 +39,7 @@ describe('Movies Effects', () => {
       useValue: {
         dispatch
       }
-    }
+    };
 
     TestBed.configureTestingModule({
       providers: [
@@ -72,7 +71,7 @@ describe('Movies Effects', () => {
   }));
 
   it('requestMoviesCollection should do something on error', async(() => {
-    getMoviesCollection.and.returnValue(Observable.throw({}));
+    getMoviesCollection.and.returnValue(Observable.throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.RequestMovies());
 
@@ -98,7 +97,7 @@ describe('Movies Effects', () => {
   }));
 
   it('requestMovie should do something on error', async(() => {
-    getMovie.and.returnValue(Observable.throw({}));
+    getMovie.and.returnValue(Observable.throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.RequestMovie(1));
 
@@ -119,7 +118,7 @@ describe('Movies Effects', () => {
   }));
 
   it('createMovie should do something on error', async(() => {
-    createMovie.and.returnValue(Observable.throw({}));
+    createMovie.and.returnValue(Observable.throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.CreateMovie(new Movie()));
 
@@ -140,7 +139,7 @@ describe('Movies Effects', () => {
   }));
 
   it('updateMovie should do something on error', async(() => {
-    updateMovie.and.returnValue(Observable.throw({}));
+    updateMovie.and.returnValue(Observable.throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.UpdateMovie(new Movie()));
 
@@ -161,7 +160,7 @@ describe('Movies Effects', () => {
   }));
 
   it('deleteMovie should do something on error', async(() => {
-    deleteMovie.and.returnValue(Observable.throw({}));
+    deleteMovie.and.returnValue(Observable.throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new MoviesActions.DeleteMovie(1));
 

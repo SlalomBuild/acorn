@@ -8,8 +8,8 @@ export const actionTypes = {
 
 /**
  * Action to set loading flag
- * @param actionType {string} - Type of the action to have its flag set
- * @param isLoading {boolean} - Flag designating if request is loading or not
+ * @param actionType - Type of the action to have its flag set
+ * @param isLoading - Flag designating if request is loading or not
  */
 export class SetLoadingFlag implements Action {
   type = actionTypes.SET_LOADING_FLAG;
@@ -21,7 +21,7 @@ export class SetLoadingFlag implements Action {
 
 /**
  * Action to open a particular modal
- * @param payload {string} - modal name to open
+ * @param payload - modal name to open
  */
 export class OpenModal implements Action {
   type = actionTypes.OPEN_MODAL;

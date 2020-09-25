@@ -7,7 +7,7 @@ import { mergeMap } from 'rxjs/operators';
 import { ApplicationActions, MoviesActions } from 'app/actions';
 import { MoviesService } from 'app/services';
 import * as fromReducers from 'app/reducers/store';
-import { Movie } from 'app/models'
+import { Movie } from 'app/models';
 
 @Injectable()
 export class MoviesEffects {
@@ -32,7 +32,7 @@ export class MoviesEffects {
         })
         .catch(() => {
           return of(new MoviesActions.SetMovies(null));
-        })
+        });
     })
   );
 
@@ -51,7 +51,7 @@ export class MoviesEffects {
         })
         .catch(() => {
           return of(new MoviesActions.SetMovie(null));
-        })
+        });
     })
   );
 
@@ -70,7 +70,7 @@ export class MoviesEffects {
         })
         .catch(() => {
           return of(new MoviesActions.SetMovies(null));
-        })
+        });
     })
   );
 
@@ -90,7 +90,7 @@ export class MoviesEffects {
         })
         .catch(() => {
           return of(new MoviesActions.SetMovies(null));
-        })
+        });
     })
   );
 
@@ -109,7 +109,7 @@ export class MoviesEffects {
         })
         .catch(() => {
           return of(new MoviesActions.SetMovies(null));
-        })
+        });
     })
   );
 }

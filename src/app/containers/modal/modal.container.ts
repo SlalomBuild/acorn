@@ -11,7 +11,7 @@ import { Movie } from 'app/models';
   By isolating modals this way we should be able to avoid bloat + inconsistencies when interacting with the other containers
 */
 @Component({
-  selector: 'modal-container',
+  selector: 'app-modal-container',
   templateUrl: './modal.container.html',
   styleUrls: ['./modal.container.scss']
 })

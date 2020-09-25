@@ -1,9 +1,9 @@
-<movies-table
+<app-movies-table
   [movies]="moviesCollection | async"
   (updateMovie)="onUpdateMovie($event)"
   (deleteMovie)="onDeleteMovie($event)"
-></movies-table>
-<movie-builder
+></app-movies-table>
+<app-movie-builder
   [movies]="moviesCollection | async"
   (submitMovie)="onSubmitMovie($event)"
-></movie-builder>
+></app-movie-builder>

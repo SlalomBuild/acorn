@@ -1,14 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { get } from 'lodash';
 
 import { Movie } from 'app/models';
 
 @Component({
-  selector: 'movies-table',
+  selector: 'app-movies-table',
   templateUrl: './movies-table.component.html',
   styleUrls: ['./movies-table.component.scss']
 })
-export class MoviesTableComponent {
+export class MoviesTableComponent implements OnChanges {
   @Input() movies: Movie[];
   @Output() updateMovie = new EventEmitter<number>();
   @Output() deleteMovie = new EventEmitter<number>();

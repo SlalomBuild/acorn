@@ -27,5 +27,5 @@ export function reducer(state = initialState, action: MoviesActions.Actions): St
   }
 }
 
-export const getMoviesCollection = (state: State): Movie[] => { return state.movies; };
-export const getMovie = (state: State): Movie => { return state.movie; };
+export const getMoviesCollection = (state: State): Movie[] => state.movies;
+export const getMovie = (state: State): Movie => state.movie;

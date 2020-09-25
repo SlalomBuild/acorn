@@ -20,7 +20,7 @@ export interface State {
   application: fromApplication.State;
   movies: fromMovies.State;
   config: fromConfig.State;
-};
+}
 
 export const reducers = {
   application: fromApplication.reducer,

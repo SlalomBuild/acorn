@@ -1,16 +1,16 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Movie } from 'app/models';
 
 @Component({
-  selector: 'movie-modal',
+  selector: 'app-movie-modal',
   templateUrl: './movie-modal.component.html',
   styleUrls: ['./movie-modal.component.scss']
 })
-export class MovieModalComponent {
+export class MovieModalComponent implements OnChanges {
   @Input() movie: Movie;
-  @Output() onUpdate = new EventEmitter<Movie>();
+  @Output() update = new EventEmitter<Movie>();
 
   movieForm: FormGroup;
 
@@ -35,6 +35,6 @@ export class MovieModalComponent {
   }
 
   updateMovie() {
-    this.onUpdate.emit(this.movieForm.value);
+    this.update.emit(this.movieForm.value);
   }
 }

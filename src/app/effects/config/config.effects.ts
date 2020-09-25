@@ -32,7 +32,7 @@ export class ConfigEffects {
         })
         .catch(() => {
           return Observable.of(new ConfigActions.SetConfig(null));
-        })
+        });
     })
   );
 }

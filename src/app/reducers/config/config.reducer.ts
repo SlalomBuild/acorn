@@ -21,4 +21,4 @@ export function reducer(state = initialState, action: ConfigActions.Actions): St
   }
 }
 
-export const getConfig = (state: State): Config => { return state.config; };
+export const getConfig = (state: State): Config => state.config;

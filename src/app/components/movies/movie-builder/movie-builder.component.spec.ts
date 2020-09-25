@@ -31,7 +31,7 @@ describe('MovieBuilderComponent', () => {
       title: 'test title',
       description: 'test desc',
       releaseDate: date
-    })
+    });
     component.ngOnChanges({});
     component.ngOnChanges({ movies: null });
     expect(component.movieForm.value).toEqual({

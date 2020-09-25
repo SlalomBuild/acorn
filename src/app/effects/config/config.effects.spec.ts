@@ -11,7 +11,6 @@ import { Config } from 'app/models';
 
 describe('Config Effects', () => {
   let effects: ConfigEffects;
-  let service: ConfigService;
   let actions: ReplaySubject<any>;
   let getConfig, dispatch;
 
@@ -29,7 +28,7 @@ describe('Config Effects', () => {
       useValue: {
         dispatch
       }
-    }
+    };
 
     TestBed.configureTestingModule({
       providers: [
@@ -45,7 +44,7 @@ describe('Config Effects', () => {
 
   it('requestConfig should dispatch a SetConfig on success', async(() => {
     const mockData = new Config();
-    getConfig.and.returnValue(Observable.of(mockData))
+    getConfig.and.returnValue(Observable.of(mockData));
     actions = new ReplaySubject(1);
     actions.next(new ConfigActions.RequestConfig());
 
@@ -55,7 +54,7 @@ describe('Config Effects', () => {
   }));
 
   it('requestConfig should do something on error', async(() => {
-    getConfig.and.returnValue(Observable.throw({}));
+    getConfig.and.returnValue(Observable.throwError({}));
     actions = new ReplaySubject(1);
     actions.next(new ConfigActions.RequestConfig());
 

@@ -4,7 +4,7 @@ import {
   async
 } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import {
   HttpClient as NgHttpClient,
   HttpHeaders,

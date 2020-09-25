@@ -22,7 +22,7 @@ export class RequestMovies implements Action {
 
 /**
  * Action to set the sample data collection
- * @param payload {Movie[]} - collection of movies
+ * @param payload - collection of movies
  */
 export class SetMovies implements Action {
   type = actionTypes.SET_MOVIES;
@@ -31,7 +31,7 @@ export class SetMovies implements Action {
 
 /**
  * Action to initiate a request to fetch a specific movie
- * @param payload {number} - Id of movie to be deleted
+ * @param payload - Id of movie to be deleted
  */
 export class RequestMovie implements Action {
   type = actionTypes.REQUEST_MOVIE;
@@ -40,7 +40,7 @@ export class RequestMovie implements Action {
 
 /**
  * Action to set the details for a specific movie
- * @param payload {Movie} - Details for designated movie
+ * @param payload - Details for designated movie
  */
 export class SetMovie implements Action {
   type = actionTypes.SET_MOVIE;
@@ -49,7 +49,7 @@ export class SetMovie implements Action {
 
 /**
  * Action to initiate a request to create a new movie
- * @param payload {Movie} - Movie to be created
+ * @param payload - Movie to be created
  */
 export class CreateMovie implements Action {
   type = actionTypes.CREATE_MOVIE;
@@ -58,7 +58,7 @@ export class CreateMovie implements Action {
 
 /**
  * Action to initiate a request to fetch a specific movie
- * @param payload {Movie} - Movie to be updated
+ * @param payload - Movie to be updated
  */
 export class UpdateMovie implements Action {
   type = actionTypes.UPDATE_MOVIE;
@@ -67,7 +67,7 @@ export class UpdateMovie implements Action {
 
 /**
  * Action to initiate a request to fetch a specific movie
- * @param payload {number} - Id of movie to be deleted
+ * @param payload - Id of movie to be deleted
  */
 export class DeleteMovie implements Action {
   type = actionTypes.DELETE_MOVIE;

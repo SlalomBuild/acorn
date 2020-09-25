@@ -2,7 +2,7 @@ import { ApplicationActions } from 'app/actions';
 
 export interface State {
   modals: any; // obj where each key represents a modal to have open/closed
-  loadingFlags: any // obj where each key represents a loading flag
+  loadingFlags: any; // obj where each key represents a loading flag
 }
 
 export const initialState: State = {
