@@ -1,12 +1,13 @@
 # AcornJs
 
+## Notes before using
+This project is organized to group components separately from the global state. Depending on the size and scope of your project it may be preferable to group components, services, and state into modules and organize those by feature.
+
+Note: See [Patterns](#patterns) section for additional detail on this.
+
 ## Development server
 
 Run `ng serve` or `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-See [acorn-schematics](https://bitbucket.org/slalom-consulting/acorn-schematics/src/master/) for scaffolding tailored to this project structure.
 
 ## Build
 
